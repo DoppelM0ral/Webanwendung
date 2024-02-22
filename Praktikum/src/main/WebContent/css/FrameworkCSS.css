@@ -1,0 +1,89 @@
+@charset "ISO-8859-1";
+
+/*CSS-File für die UI*/
+
+/*Allgemeine Formatierungen für gesamte Page*/
+body{
+	margin:0;
+	padding:0;
+	font-family: century-gothic, sans-serif;
+	}
+
+/*Formatierung für den Header Div*/
+div.nav{
+	position: fixed;
+	top: 0;
+	background-color: rgb(64, 64, 64);
+  	width: 100%;
+  	height: 38px;
+	color: white;
+	text-align: center;
+}
+/*Formatierung für die Navigationsbar*/
+nav{
+	height: 38px;
+	margin-top: 2.5px;
+	font-weight:bold;
+	font-size: x-large; 
+}
+/*Icon Größen genormt*/
+img.nav{
+	height: 30px;
+	width: 30px;
+}
+/*Position der Links auf den Icons festgelegt*/
+a.nav{
+	position: fixed;
+	top: 3.5px;
+}
+
+a#left{
+	left: 15px;
+}
+
+a#right{
+	right: 15px;
+}
+
+/*Formatierung für die linke Sidebar*/
+div.left{
+	float:left;
+	background-color: rgb(4, 170, 109);
+    width: 15%;
+    height: 100vh;
+}
+/*Formatierung für die rechte Sidebar*/
+div.right{
+	float:right;
+	background-color: rgb(4, 170, 109);
+    width: 15%;
+    height: 100vh;
+}
+/*Formatierung für den Zentralen Bereich*/
+div.central{
+	margin-left: 15%;
+	background-color:white;
+    width: 70%;
+    height: 100vh;
+}
+
+/*Formatierung von MessageBean Feld(Befindet sich im Zentralen Bereich)*/
+div.message{
+	position: absolute;
+	left: 50%;
+	top: 40%;
+	transform: translate(-50%, -50%);
+	border: 2px solid #ff0000;
+	border-radius: 6px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+/*Formatierungen für den Footer*/
+footer{
+	background-color: rgb(64, 64, 64);
+ 	color: white;
+ 	padding: 1%;
+}
+
+
