@@ -1,6 +1,8 @@
 package beans;
 
 public class FrameworkBean {
+	
+	int loggedIn = 0;
 
 	public FrameworkBean(){
 		
@@ -9,7 +11,7 @@ public class FrameworkBean {
 	public String getFramework(){
 		String framework = ""
 	//Linke Sidebar
-						+"		<div class='left'>\n"
+						+"	<div class='left'>\n"
 						+"		</div>\n"
 	//Rechte Sidebar
 						+"		<div class='right'>\n"
@@ -17,9 +19,15 @@ public class FrameworkBean {
 	//Header mit Buttons
 						+"		<div class='nav'>\n"
 						+"			<nav>\n"
-						+"				<a class='nav' id='left' href='CentralView.jsp'><img class='nav' src='../content/Home.png' alt='Home'></a>\n"
-						+"				<a class='nav' id='right' href='LoginView.jsp'><img class='nav' src='../content/Key.png' alt='Key'></a\n"
-						+"				<p>OpenSource Stadt-Guide</p>\n"
+						+"				<a class='nav' id='left' href='CentralView.jsp'><img class='nav' src='../content/Home.png' alt='Home'></a>\n";
+	//Check ob eingelogt über die LoginBean, wenn ja kommt ein anderer Link als wenn nicht
+		if(loggedIn == 1) {
+			framework += "				<a class='nav' id='right' href='LoginView.jsp'><img class='nav' src='../content/User.png' alt='Key'></a\n";
+		}else {
+				framework += "				<a class='nav' id='right' href='LoginView.jsp'><img class='nav' src='../content/Key.png' alt='Key'></a\n";
+		}
+						
+				framework += "				<p>OpenSource Stadt-Guide</p>\n"
 						+"			</nav>\n"			
 						+"		</div>\n"
 	//Zentrale div mit dem tatsächlichem Content der Website

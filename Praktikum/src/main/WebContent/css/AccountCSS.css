@@ -1,0 +1,8 @@
+@charset "ISO-8859-1";
+
+table#info{
+	position: absolute;
+	left: 50%;
+	top: 30%;
+	transform: translate(-50%, -50%);
+}

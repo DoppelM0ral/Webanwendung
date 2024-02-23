@@ -9,10 +9,11 @@
 		<!-- Hier wird die Grundformatierung geladen -->
 		<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
 		<!-- In diesem Bereich werden andere relevante Formatierungen geladen -->
-		
+		<link rel="stylesheet" type="text/css" href="../css/AccountCSS.css">
 		<!-- Hier wird das Icon geladen -->
 		<link rel="icon" type="image/x-icon" href="../content/Icon.png">
-		<title>Stadtguide</title>
+		
+		<title>Nutzer Informationen</title>
 	</head>
 	<body>
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->
@@ -26,28 +27,34 @@
 	
 	<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
 	<jsp:getProperty name="message" property="mainMessage"/>
-			
-			<!-- <div class='content'>
-				<table>
-					<tr>
-						<td width="20%">
-							Was suchen sie?<br>
-									<select name="gesucht" onChange="showOption(this)">
-										<option value="">Auswählen</option>
-										<option value="restaurant">Restaurant</option>
-										<option value="unterkunft">Unterkunft</option>
-										<option value="kultur">Kultur</option>
-										<option value="aktivitaet">Aktivität</option>
-									</select>
-						</td>
-					</tr>
-				</table>
-			</div> -->
-			<div>
-				<table>
-				</table>
-			</div>
-		</div>
+		
+		<table id="info">
+			<tr>
+				<td colspan="2">Nutzer Informationen</td>
+			</tr>
+			<tr>
+				<td>Nutzername:</td>
+				<td>test</td>
+			</tr>
+			<tr>
+				<td>Passwort:</td>
+				<td>Passwort</td>
+			</tr>
+			<tr>
+				<td>Email:</td>
+				<td>email@me.de</td>
+			</tr>
+			<tr>
+				<td>Sprache:</td>
+				<td>englisch</td>
+			</tr>
+			<tr>
+				<td>UI-Farbe:</td>
+				<td>grün</td>
+			</tr>
+		</table>	
+	
+		</div><!-- Dieses </div> schließt ein in der 20. Zeile(FrameworkBean) eröffnetes <div> -->
 	<jsp:getProperty name="framework" property="footer"/>	
 	</body>
 </html>

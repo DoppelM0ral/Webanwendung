@@ -65,6 +65,7 @@ div.central{
 	background-color:white;
     width: 70%;
     height: 100vh;
+    overflow: none;
 }
 
 /*Formatierung von MessageBean Feld(Befindet sich im Zentralen Bereich)*/
