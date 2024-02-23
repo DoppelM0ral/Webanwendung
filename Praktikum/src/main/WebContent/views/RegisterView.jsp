@@ -9,7 +9,7 @@
 		<!-- Hier wird die Grundformatierung geladen -->
 		<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
 		<!-- In diesem Bereich werden andere relevante Formatierungen geladen -->
-		
+		<link rel="stylesheet" type="text/css" href="../css/RegisterCSS.css">
 		<!-- Hier wird das Icon geladen -->
 		<link rel="icon" type="image/x-icon" href="../content/Icon.png">
 		
@@ -27,6 +27,57 @@
 	
 	<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
 	<jsp:getProperty name="message" property="mainMessage"/>
+	
+	<!-- Hier wird die Oberfläche fürs Registrieren geladen -->
+	<%-- <jsp:getProperty name="account" property="registerField"/> --%>
+	
+	<form action='./RegAppl.jsp' method='get'>
+					 	<table>
+					 		<tr>
+					 			<td><img id="info" alt="info" src="../content/Info.png"></td>
+					 			<td>Nickname:</td>
+					 			<td><input type='text' name='userid' value=''/>
+					 			</td>
+					 			<td id='useridMsg' class='fehlerfeld'></td>
+					 		</tr>
+					 		<tr>
+					 			<td><img id="info" alt="info" src="../content/Info.png"></td>
+					 			<td>Passwort:</td>
+					 			<td><input id='passwordField' type='password' name='password' value=''
+					 				onkeyup='checkPassword(this.value)'
+					 			 />
+					 			</td>
+					 			<td><input type='button' name='showPw' value='showPw' onclick='togglePw()'/> 
+					 			</td>
+					 		</tr>
+					 		<tr>
+					 			<td><img id="info" alt="info" src="../content/Info.png"></td>
+					 			<td>Sprache</td>
+					 			<td><input type='number' name='age'
+					 							value='' /></td>
+					 			<td id='ageMsg' class='fehlerfeld'></td>
+					 		</tr>
+					 		<tr>
+					 			<td><img id="info" alt="info" src="../content/Info.png"></td>
+					 			<td>E-Mail:</td>
+					 			<td><input type='email' name='email'
+					 							value=''
+					 					/>
+					 			</td>
+					 			<td id='emailMsg' class='fehlerfeld'></td>
+					 		</tr>
+					 		<tr>
+					 			<td></td>
+					 			<td></td>
+					 			<td  align="center">
+					 				<input type='submit' name='btnToLogin' value='zum Login' 
+					 					onclick='setButtonClicked(this.name)'/>
+					 				<input type='submit' name='btnRegister' value='Registrieren'
+					 					onclick='setButtonClicked(this.name)'/>
+					 			</td>
+					 		</tr>
+					 	</table>
+					 </form>
 			
 	</div><!-- Dieses </div> schließt ein in der 20. Zeile eröffnetes <div> -->
 	<jsp:getProperty name="framework" property="footer"/>	
