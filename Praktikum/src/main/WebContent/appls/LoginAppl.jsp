@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<title>Stadtguide</title>
+		<title>LoginAppl</title>
 	</head>
 	<body>
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->
@@ -16,11 +16,11 @@
 			String userid   = request.getParameter("userid");
 			String password = request.getParameter("password");
 			String btnLogin = request.getParameter("btnLogin");
-			String zurReg   = request.getParameter("zurReg");
+			String btnToRegister   = request.getParameter("btnToRegister");
 			
 			//null-check
 			if (btnLogin == null) btnLogin = "";
-			if (zurReg == null) zurReg = "";
+			if (btnToRegister == null) btnToRegister = "";
 			
 			//Login Button wird auf Wert überprüft
 			if (btnLogin.equals("Anmelden")){
@@ -30,28 +30,21 @@
 					boolean loginGeklappt = login.checkUseridPassword();
 					if (loginGeklappt){
 						login.setLoggedIn(true);
-						myMessage.setLoginSuccessful(userid);
-						response.sendRedirect("./CentralView.jsp");
+						response.sendRedirect("../views/CentralView.jsp");
 					}else{
 						login.setLoggedIn(false);
-						myMessage.setLoginFailed();
-						response.sendRedirect("./LoginView.jsp");		
+						response.sendRedirect("../views/LoginView.jsp");		
 					}
 				}catch(SQLException se){
 					se.printStackTrace();
 					login.setLoggedIn(false);
-					myMessage.setDBError();
-					response.sendRedirect("./LoginView.jsp");		
+					response.sendRedirect("../views/LoginView.jsp");		
 				}
-			}else if(zurReg.equals("zurReg")){
+			}else if(btnToRegister.equals("zum Registrieren")){
 				//Daten aus AccountBean löschen
-				myAccount.initialize();
-				myMessage.setRegistrationWelcome();
-				response.sendRedirect("./RegView.jsp");
+				response.sendRedirect("../views/RegisterView.jsp");
 			}else{
-				myLogin.setLoggedIn(false);
-				myMessage.setGeneralWelcome();
-				response.sendRedirect("./LoginView.jsp");
+				response.sendRedirect("../views/LoginView.jsp");
 			}
 		%>	
 	</body>

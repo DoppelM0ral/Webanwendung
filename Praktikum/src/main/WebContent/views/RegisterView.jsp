@@ -34,7 +34,7 @@
 	
 	<div id='content'>
 
-		<form  action='./RegAppl.jsp' method='get'>
+		<form  action='../appls/RegisterAppl.jsp' method='get'>
 			<table >
 				<tr>
 		 			<td><img id="info" alt="info" src="../content/Info.png"></td>
@@ -48,8 +48,8 @@
 				</tr>
 				<tr>
 					<td><img id="info" alt="info" src="../content/Info.png"></td>
-					<td>Sprache</td>
-					<td><input type='number' name='age' value=''/></td>
+					<td>Sprache:</td>
+					<td><input type='text' name='language' value=''/></td>
 				</tr>
 				<tr>
 					<td><img id="info" alt="info" src="../content/Info.png"></td>
@@ -58,7 +58,7 @@
 		 		</tr>
 				<tr>
 					<td colspan="3" align="center">
-						<input class='button' type='submit' name='btnToLogin' value='zum Login' onclick='setButtonClicked(this.name)'/>
+						<input class='button' type='submit' name='btnToLogin' value='zum Anmelden' onclick='setButtonClicked(this.name)'/>
 						<input class='button' type='submit' name='btnRegister' value='Registrieren' onclick='setButtonClicked(this.name)'/>
 					</td>
 				</tr>

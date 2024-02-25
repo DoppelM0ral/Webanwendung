@@ -1,12 +1,36 @@
 package beans;
 
+import java.sql.Connection;
+
+import jdbc.NoConnectionException;
+import jdbc.PostgreSQLAccess;
+
 public class AccountBean {
 
-	public void AccountBean() {
-		
-
+	//Initialisierung von Variablen 
+	String userid;
+	String password;
+	String language;
+	String email;
+	Connection dbConn;
+ 
+	
+	
+	public AccountBean() throws NoConnectionException {
+		this.dbConn = new PostgreSQLAccess().getConnection();
+		this.initialize();
 	}
 	
+	//Initialisierungsfunktion der Variablen
+	public void initialize() {
+		this.userid = "";
+		this.password = "";
+		this.language = "";
+		this.email = "";
+	}
+	
+	
+	//Funktion mit String für Register Feld
 	public String getRegisterField() {
 		String field = "<form action='./RegAppl.jsp' method='get'>\n"
 					 + "	<table>\n"
@@ -53,5 +77,49 @@ public class AccountBean {
 					 + "</form>";			
 		return field;
 	}
+	
+	public boolean checkExists() {
+		boolean exists;
+		
+		
+		return exists;
+	}
+	
+	
+	
 
+	
+	//Getter und Setter Methoden für die gegebenen Variablen
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 }

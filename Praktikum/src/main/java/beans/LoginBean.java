@@ -58,7 +58,7 @@ public class LoginBean {
 	//Div welche den Table zum Login beinhaltet	
 	public String getLoginDiv() {
 		String loginDiv = "	<div class='login'>\n"
-						+ "			<form action='./LoginAppl.jsp' method='get'>"
+						+ "			<form action='../appls/LoginAppl.jsp' method='get'>"
 						+ "				<table>\n"
 						+ "					<tr>\n"
 						+ "						<td>Nickname:</td>\n"
@@ -71,7 +71,7 @@ public class LoginBean {
 						+ "					<tr>\n"
 						+ "						<td colspan=2 align=center>\n"
 						+ "							<input class='button' type='submit' name='btnLogin' value='Anmelden' />\n"
-						+ "							<input class='button' type='submit' name='btnRegister' value='Registrieren'/>\n"
+						+ "							<input class='button' type='submit' name='btnToRegister' value='zum Registrieren'/>\n"
 						+ "						</td>\n"
 						+ "					</tr>\n"
 						+ "					<tr>\n"
