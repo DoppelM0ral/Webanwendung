@@ -19,19 +19,10 @@ public abstract class JDBCAccess {
 		this.setSchema();
 	}
 	public abstract void setDBParms();
-//	public void setDBParms(){
-//		dbDrivername = "com.ibm.db2.jcc.DB2Driver";
-//		dbURL = "jdbc:db2://143.93.202.3:50000/OUEBDB";
-//		dbUser = "USER50";
-//		dbPassword = "db2users";
-//		dbSchema = "S654321";
-//	}
+	
+	//Festlegung des Schemas in welchem gearbeitet wird
 	public void setSchema() throws NoConnectionException {
 		try{
-//			String sql = "SET SCHEMA ?";
-//			PreparedStatement prepStat = dbConn.prepareStatement(sql);
-//			prepStat.setString(1, dbSchema);
-//			prepStat.executeUpdate();
 			String sql = "SET SCHEMA '" + dbSchema + "'";
 			System.out.println(sql);
 			dbConn.createStatement().executeUpdate(sql);
@@ -41,6 +32,8 @@ public abstract class JDBCAccess {
 			throw new NoConnectionException();
 		}
 	}
+	
+	//Aufbau der Verbindung zur Datenbank
 	public void createConnection() throws NoConnectionException{
 		try{
 			Class.forName(dbDrivername);
@@ -57,6 +50,8 @@ public abstract class JDBCAccess {
 			throw new NoConnectionException();
 		}
 	}
+	
+	//Setzen des festgelegten Schemas
 	public Connection getConnection() throws NoConnectionException {
 		try{
 			this.setSchema();
@@ -64,15 +59,7 @@ public abstract class JDBCAccess {
 		}catch(SQLException se){
 			se.printStackTrace();
 			throw new NoConnectionException();
-//			try{
-//				this.createConnection();
-//				return dbConn;
-//			}catch(SQLException se1){
-//				throw new NoConnectionException();
-//			}
 		}
 	}
-//	public static void main(String[] args) throws SQLException, ClassNotFoundException{ 
-//		new JDBCAccess();
-//	}
+	
 }

@@ -26,58 +26,51 @@
 	<jsp:getProperty name="framework" property="framework"/>
 	
 	<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
-	<jsp:getProperty name="message" property="mainMessage"/>
+	<jsp:getProperty name="message" property="infoMessage"/>
+	<jsp:getProperty name="message" property="actionMessage"/>
 	
 	<!-- Hier wird die Oberfläche fürs Registrieren geladen -->
 	<%-- <jsp:getProperty name="account" property="registerField"/> --%>
 	
-	<form action='./RegAppl.jsp' method='get'>
-					 	<table>
-					 		<tr>
-					 			<td><img id="info" alt="info" src="../content/Info.png"></td>
-					 			<td>Nickname:</td>
-					 			<td><input type='text' name='userid' value=''/>
-					 			</td>
-					 			<td id='useridMsg' class='fehlerfeld'></td>
-					 		</tr>
-					 		<tr>
-					 			<td><img id="info" alt="info" src="../content/Info.png"></td>
-					 			<td>Passwort:</td>
-					 			<td><input id='passwordField' type='password' name='password' value=''
-					 				onkeyup='checkPassword(this.value)'
-					 			 />
-					 			</td>
-					 			<td><input type='button' name='showPw' value='showPw' onclick='togglePw()'/> 
-					 			</td>
-					 		</tr>
-					 		<tr>
-					 			<td><img id="info" alt="info" src="../content/Info.png"></td>
-					 			<td>Sprache</td>
-					 			<td><input type='number' name='age'
-					 							value='' /></td>
-					 			<td id='ageMsg' class='fehlerfeld'></td>
-					 		</tr>
-					 		<tr>
-					 			<td><img id="info" alt="info" src="../content/Info.png"></td>
-					 			<td>E-Mail:</td>
-					 			<td><input type='email' name='email'
-					 							value=''
-					 					/>
-					 			</td>
-					 			<td id='emailMsg' class='fehlerfeld'></td>
-					 		</tr>
-					 		<tr>
-					 			<td></td>
-					 			<td></td>
-					 			<td  align="center">
-					 				<input type='submit' name='btnToLogin' value='zum Login' 
-					 					onclick='setButtonClicked(this.name)'/>
-					 				<input type='submit' name='btnRegister' value='Registrieren'
-					 					onclick='setButtonClicked(this.name)'/>
-					 			</td>
-					 		</tr>
-					 	</table>
-					 </form>
+	<div id='content'>
+
+		<form  action='./RegAppl.jsp' method='get'>
+			<table >
+				<tr>
+		 			<td><img id="info" alt="info" src="../content/Info.png"></td>
+		 			<td>Nickname:</td>
+		 			<td><input type='text' name='userid' value=''/></td>
+				</tr>
+				<tr>
+					<td><img id="info" alt="info" src="../content/Info.png"></td>
+					<td>Passwort:</td>
+					<td><input id='passwordField' type='password' name='password' value=''onkeyup='checkPassword(this.value)'/></td>
+				</tr>
+				<tr>
+					<td><img id="info" alt="info" src="../content/Info.png"></td>
+					<td>Sprache</td>
+					<td><input type='number' name='age' value=''/></td>
+				</tr>
+				<tr>
+					<td><img id="info" alt="info" src="../content/Info.png"></td>
+					<td>E-Mail:</td>
+					<td><input type='email' name='email' value=''/></td>
+		 		</tr>
+				<tr>
+					<td colspan="3" align="center">
+						<input class='button' type='submit' name='btnToLogin' value='zum Login' onclick='setButtonClicked(this.name)'/>
+						<input class='button' type='submit' name='btnRegister' value='Registrieren' onclick='setButtonClicked(this.name)'/>
+					</td>
+				</tr>
+			</table>
+		</form>
+
+	</div>
+
+	
+
+	
+
 			
 	</div><!-- Dieses </div> schließt ein in der 20. Zeile eröffnetes <div> -->
 	<jsp:getProperty name="framework" property="footer"/>	

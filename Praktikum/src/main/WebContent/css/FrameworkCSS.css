@@ -3,10 +3,17 @@
 /*CSS-File für die UI*/
 
 /*Allgemeine Formatierungen für gesamte Page*/
+html {
+    height: 100%;
+    width: 100%;
+}
+
 body{
 	margin:0;
 	padding:0;
 	font-family: century-gothic, sans-serif;
+	height: inherit;
+    width: inherit;
 	}
 
 /*Formatierung für den Header Div*/
@@ -21,7 +28,6 @@ div.nav{
 }
 /*Formatierung für die Navigationsbar*/
 nav{
-	height: 38px;
 	margin-top: 2.5px;
 	font-weight:bold;
 	font-size: x-large; 
@@ -30,6 +36,11 @@ nav{
 img.nav{
 	height: 30px;
 	width: 30px;
+}
+/*Backbutton angepasst*/
+img#back{
+	height: 25px;
+	width: 25px;
 }
 /*Position der Links auf den Icons festgelegt*/
 a.nav{
@@ -41,50 +52,82 @@ a#left{
 	left: 15px;
 }
 
+a#back{
+	left: 60px;
+	top: 6px;
+}
+
 a#right{
 	right: 15px;
 }
 
 /*Formatierung für die linke Sidebar*/
 div.left{
+	position:static;
 	float:left;
 	background-color: rgb(4, 170, 109);
     width: 15%;
-    height: 100vh;
+    height: inherit;
+
 }
 /*Formatierung für die rechte Sidebar*/
 div.right{
+	position:static;
 	float:right;
 	background-color: rgb(4, 170, 109);
     width: 15%;
-    height: 100vh;
+    height: 100%;
 }
 /*Formatierung für den Zentralen Bereich*/
 div.central{
+	position:static;
+	margin-top: 38px;
 	margin-left: 15%;
 	background-color:white;
     width: 70%;
-    height: 100vh;
-    overflow: none;
+    height: 95%;
+}
+/*Formatierung für Content im Zentralen Bereich*/
+div#content{
+	margin-top: 3%;
+	justify-content: center;
+	display: flex;
 }
 
 /*Formatierung von MessageBean Feld(Befindet sich im Zentralen Bereich)*/
-div.message{
-	position: absolute;
-	left: 50%;
-	top: 40%;
-	transform: translate(-50%, -50%);
-	border: 2px solid #ff0000;
+div#mainmsg{
+	padding-top: 3%;
+	justify-content: center;
+	display: flex;
+	text-align: center;
+}
+
+div#actionmsg{
+	padding-top: 5%;
+	justify-content: center;
+	display: flex;
+	text-align: center;
+}
+
+/*Formatierung von Buttons*/
+input.button{
+	color: white;
+ 	background-color: #04AA6D;
+	border: none;
 	border-radius: 6px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 8px 16px;
+	text-align: center;
+	font-size: 12px;
 }
 
 /*Formatierungen für den Footer*/
 footer{
+	top: 100%;
+	width: 100%;
+	position: absolute;
 	background-color: rgb(64, 64, 64);
  	color: white;
- 	padding: 1%;
+
 }
 
 

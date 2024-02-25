@@ -11,13 +11,12 @@ public class MessageBean {
 	
 	
 	public String getMainMessage() {
-		String message = "<p>Willkommen beim\n"
-				+"OpenSource Stadtguide</p>";
+		String message=""; 
 		return message;
 	}
 
 	public void setGeneralWelcome(){
-		this.infoMessage = "Willkommen beim\n"
+		this.infoMessage = "Willkommen beim<br>"
 						+"OpenSource Stadtguide";
 		this.actionMessage = "Bitte melden Sie sich an";
 	}
@@ -29,12 +28,18 @@ public class MessageBean {
 	}
 
 	public String getInfoMessage() {
+		infoMessage = "<div id='mainmsg'>\n"
+			   	  	+ "	<h2>Platzhalter für<br> tatsächliche Infomessage <br>(Funktion wird noch eingeführt)</h2>"
+			   	  	+ "</div>";
 		return infoMessage;
 	}
 	public void setInfoMessage(String infoMessage) {
 		this.infoMessage = infoMessage;
 	}
-	public String getActionMessage() {
+	public String getActionMessage() { 
+		actionMessage = "<div id='actionmsg'>\n"
+		   	  	+ "	<p>Platzhalter für<br> tatsächliche Actionmessage <br>(Funktion wird noch eingeführt)</p>"
+		   	  	+ "</div>";
 		return actionMessage;
 	}
 	public void setActionMessage(String actionMessage) {
