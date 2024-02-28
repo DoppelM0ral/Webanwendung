@@ -19,21 +19,13 @@ public abstract class JDBCAccess {
 		this.setSchema();
 	}
 	public abstract void setDBParms();
-	
-	//Festlegung des Schemas in welchem gearbeitet wird
-	public void setSchema() throws NoConnectionException {
-		try{
-			String sql = "SET SCHEMA '" + dbSchema + "'";
-			System.out.println(sql);
-			dbConn.createStatement().executeUpdate(sql);
-			System.out.println("Schema " + dbSchema + " erfolgreich gesetzt");
-		}catch(SQLException se){
-			se.printStackTrace();
-			throw new NoConnectionException();
-		}
-	}
-	
-	//Aufbau der Verbindung zur Datenbank
+//	public void setDBParms(){
+//		dbDrivername = "com.ibm.db2.jcc.DB2Driver";
+//		dbURL = "jdbc:db2://143.93.202.3:50000/OUEBDB";
+//		dbUser = "USER50";
+//		dbPassword = "db2users";
+//		dbSchema = "S654321";
+//	}
 	public void createConnection() throws NoConnectionException{
 		try{
 			Class.forName(dbDrivername);
@@ -41,6 +33,7 @@ public abstract class JDBCAccess {
 		
 			dbConn = DriverManager.getConnection(
 												dbURL,
+	
 												dbUser,
 												dbPassword
 												);
@@ -50,16 +43,23 @@ public abstract class JDBCAccess {
 			throw new NoConnectionException();
 		}
 	}
-	
-	//Setzen des festgelegten Schemas
+	public abstract void setSchema() throws NoConnectionException;
+//	public void setSchema() throws NoConnectionException {
+//		try{
+//			String sql = "SET SCHEMA ?";
+//			PreparedStatement prepStat = dbConn.prepareStatement(sql);
+//			prepStat.setString(1, dbSchema);
+//			prepStat.executeUpdate();
+//			String sql = "SET SCHEMA '" + dbSchema + "'";
+//			System.out.println(sql);
+//			dbConn.createStatement().executeUpdate(sql);
+//			System.out.println("Schema " + dbSchema + " erfolgreich gesetzt");
+//		}catch(SQLException se){
+//			se.printStackTrace();
+//			throw new NoConnectionException();
+//		}
+//	}
 	public Connection getConnection() throws NoConnectionException {
-		try{
-			this.setSchema();
-			return dbConn;
-		}catch(SQLException se){
-			se.printStackTrace();
-			throw new NoConnectionException();
-		}
+		return dbConn;
 	}
-	
 }

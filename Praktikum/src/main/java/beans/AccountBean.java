@@ -79,7 +79,7 @@ public class AccountBean {
 	}
 	
 	public boolean checkExists() {
-		boolean exists;
+		boolean exists = true;
 		
 		
 		return exists;
