@@ -39,7 +39,7 @@
 				<tr>
 		 			<td><img id="info" alt="info" src="../content/Info.png"></td>
 		 			<td>Nickname:</td>
-		 			<td><input type='text' name='userid' value=''/></td>
+		 			<td><input type='text' name='username' value=''/></td>
 				</tr>
 				<tr>
 					<td><img id="info" alt="info" src="../content/Info.png"></td>

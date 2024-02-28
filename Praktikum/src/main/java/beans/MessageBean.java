@@ -28,18 +28,18 @@ public class MessageBean {
 	}
 
 	public String getInfoMessage() {
-		infoMessage = "<div id='mainmsg'>\n"
-			   	  	+ "	<h2>Platzhalter für<br> tatsächliche Infomessage <br>(Funktion wird noch eingeführt)</h2>"
-			   	  	+ "</div>";
+		infoMessage = "		<div id='mainmsg'>\n"
+			   	  	+ "				<h2>Platzhalter für<br> tatsächliche Infomessage <br>(Funktion wird noch eingeführt)</h2>\n"
+			   	  	+ "			</div>";
 		return infoMessage;
 	}
 	public void setInfoMessage(String infoMessage) {
 		this.infoMessage = infoMessage;
 	}
 	public String getActionMessage() { 
-		actionMessage = "<div id='actionmsg'>\n"
-		   	  	+ "	<p>Platzhalter für<br> tatsächliche Actionmessage <br>(Funktion wird noch eingeführt)</p>"
-		   	  	+ "</div>";
+		actionMessage = "		<div id='actionmsg'>\n"
+		   	  	+ "				<p>Platzhalter für<br> tatsächliche Actionmessage <br>(Funktion wird noch eingeführt)</p>\n"
+		   	  	+ "			</div>";
 		return actionMessage;
 	}
 	public void setActionMessage(String actionMessage) {

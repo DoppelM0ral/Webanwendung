@@ -1,6 +1,8 @@
 package beans;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import jdbc.NoConnectionException;
 import jdbc.PostgreSQLAccess;
@@ -8,7 +10,8 @@ import jdbc.PostgreSQLAccess;
 public class AccountBean {
 
 	//Initialisierung von Variablen 
-	String userid;
+	boolean loggedin;
+	String username;
 	String password;
 	String language;
 	String email;
@@ -23,22 +26,23 @@ public class AccountBean {
 	
 	//Initialisierungsfunktion der Variablen
 	public void initialize() {
-		this.userid = "";
+		this.username = "";
 		this.password = "";
 		this.language = "";
 		this.email = "";
+		this.loggedin = false;
 	}
 	
 	
 	//Funktion mit String für Register Feld
 	public String getRegisterField() {
-		String field = "<form action='./RegAppl.jsp' method='get'>\n"
+		String field = "<form action='../appls/RegisterAppl.jsp' method='get'>\n"
 					 + "	<table>\n"
 					 + "		<tr>\n"
 					 + "			<td>Nickname:</td>\n"
-					 + "			<td><input type='text' name='userid' value=''\n"
+					 + "			<td><input type='text' name='username' value=''\n"
 					 + "			</td>\n"
-					 + "			<td id='useridMsg' class='fehlerfeld'></td>\n"
+					 + "			<td id='usernameMsg' class='fehlerfeld'></td>\n"
 					 + "		</tr>\n"
 					 + "		<tr>\n"
 					 + "			<td>Passwort:</td>\n"
@@ -86,16 +90,36 @@ public class AccountBean {
 	}
 	
 	
-	
+	//Legt Account an
+	public void insertAccountNoCheck() throws SQLException{
+		String sql = "insert into account (username, password, language, email) values (?,?,?,?)";
+		System.out.println(sql);
+		PreparedStatement prep = this.dbConn.prepareStatement(sql);
+		prep.setString(1, this.username);
+		prep.setString(2, this.password);
+		prep.setString(3, this.language);
+		prep.setString(4, this.email);
+
+		prep.executeUpdate();
+		System.out.println("Account " + this.username + " erfolgreich angelegt");
+	}
 
 	
 	//Getter und Setter Methoden für die gegebenen Variablen
-	public String getUserid() {
-		return userid;
+	public boolean isLoggedin() {
+		return loggedin;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setLoggedin(boolean loggedin) {
+		this.loggedin = loggedin;
+	}
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {

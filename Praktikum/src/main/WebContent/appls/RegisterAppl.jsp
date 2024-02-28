@@ -13,11 +13,11 @@
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 		<%
 			//Übertragung der Daten von RegisterView
-			String userid   = request.getParameter("userid");
+			String username   = request.getParameter("username");
 			String password = request.getParameter("password");
 			String language = request.getParameter("language");
 			String email 	= request.getParameter("email");
-			String btnToLogin	 = request.getParameter("btnLogin");
+			String btnToLogin	 = request.getParameter("btnToLogin");
 			String btnRegister   = request.getParameter("btnRegister");
 			
 			//null-check
@@ -30,23 +30,13 @@
 				response.sendRedirect("../views/LoginView.jsp");
 			}else if(btnRegister.equals("Registrieren")){
 				//Registrierung durchführen
-				account.setUserid(userid);
+				account.setUsername(username);
 				account.setPassword(password);
 				account.setLanguage(language);
 				account.setEmail(email);
-				
-				boolean accountAngelegt = account.insertAccountIfNotExists();
-				if (accountAngelegt){
-					myMessage.setAccountCreated(userid);
-				}else{
-					myMessage.setAccountAlreadyExists(userid);
-				}
-			}
-				
-				response.sendRedirect("../views/RegisterView.jsp");
-			}else{
-				//Etwas ist schief gegangen entsprechende Message einfügen
-				response.sendRedirect("../views/RegisterView.jsp");
+				account.insertAccountNoCheck();
+				//Weiterleiten zu LoginView
+				response.sendRedirect("../views/LoginView.jsp");
 			}
 		%>	
 	</body>

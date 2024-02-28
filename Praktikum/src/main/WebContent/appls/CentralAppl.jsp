@@ -2,11 +2,16 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>CentralAppl</title>
-</head>
-<body>
-
-</body>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>CentralAppl</title>
+	</head>
+	<body>
+	<!-- In diesem Bereich werden die benötigten Beans geladen -->
+	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
+		<%
+			
+			
+		%>	
+	</body>
 </html>

@@ -31,15 +31,14 @@
 		 gesamten JSP-Struktur(Header/Sidebars/Footer) -->
 	<jsp:getProperty name="framework" property="framework"/>
 	
-	<!-- Hier sollte Inhalt aus der MessageBean, es ist derzeit nur ein Platzhalter -->
-		<!-- <div class="message">
-			Hey für die Funktion "jeweilige Funktion" musst du dich eingeloggen oder alternativ kannst du dich auch Registrieren
-		</div> -->
+	<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
+	<jsp:getProperty name="message" property="infoMessage"/>
+	<jsp:getProperty name="message" property="actionMessage"/>
 	
 	<!-- Hier wird das Feld für der Login aus der LoginBean geladen -->
 	<jsp:getProperty name="login" property="loginDiv"/>
 		
-		</div><!-- Dieses </div> schließt ein in der 20. Zeile eröffnetes <div> -->
+		</div><!-- Schließt <div> aus Framework -->
 	<jsp:getProperty name="framework" property="footer"/>	
 	</body>
 </html>

@@ -15,7 +15,7 @@ public class PostgreSQLAccess extends JDBCAccess {
 //		dbURL        = "jdbc:postgresql://localhost:5432/BWUEBDB";
 //		dbUser       = "postgres";
 //		dbPassword   = "pgadmin";
-		dbSchema     = "bwi520_633877"; // hier Matrikelnummer eintragen
+		dbSchema     = "BWI520_633877"; // hier Matrikelnummer eintragen
 		
 	}
 	public void setSchema() throws NoConnectionException {

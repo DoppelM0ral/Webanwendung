@@ -25,7 +25,8 @@
 	<jsp:getProperty name="framework" property="framework"/>
 	
 	<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
-	<jsp:getProperty name="message" property="mainMessage"/>
+	<jsp:getProperty name="message" property="infoMessage"/>
+	<jsp:getProperty name="message" property="actionMessage"/>
 			
 			<!-- <div class='content'>
 				<table>
