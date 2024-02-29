@@ -1,8 +1,6 @@
 package beans;
 
 public class FrameworkBean {
-	
-	int loggedIn = 0;
 
 	public FrameworkBean(){
 		
@@ -23,8 +21,8 @@ public class FrameworkBean {
 							+"					<a class='nav' id='left' href='CentralView.jsp'><img class='nav' src='../content/Home.png' alt='Home'></a>\n"
 							+"					<a class='nav' id='back' href='javascript:history.back()'><img id='back' src='../content/Arrow.png' alt='Arrow'></a>\n";
 		//Check ob eingelogt über die LoginBean, wenn ja kommt ein anderer Link als wenn nicht
-			if(loggedIn == 1) {
-				framework += "					<a class='nav' id='right' href='LoginView.jsp'><img class='nav' src='../content/User.png' alt='Key'></a\n";
+			if(LoginBean.isLoggedIn()) {
+				framework += "					<a class='nav' id='right' href='AccountView.jsp'><img class='nav' src='../content/User.png' alt='Key'></a\n";
 			}else {
 				framework += "					<a class='nav' id='right' href='LoginView.jsp'><img class='nav' src='../content/Key.png' alt='Key'></a\n";
 			}

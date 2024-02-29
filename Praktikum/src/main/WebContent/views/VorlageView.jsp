@@ -25,8 +25,13 @@
 		 gesamten JSP-Struktur(Header/Sidebars/Footer) -->
 	<jsp:getProperty name="framework" property="framework"/>
 	
-	<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
+		<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
+	<div id="mainmsg">
 	<jsp:getProperty name="message" property="mainMessage"/>
+	</div>
+	<div id="secondarymsg">
+	<jsp:getProperty name="message" property="secondaryMessage"/>
+	</div>
 			
 	</div><!-- Dieses </div> schließt ein in der 20. Zeile eröffnetes <div> -->
 	<jsp:getProperty name="framework" property="footer"/>	

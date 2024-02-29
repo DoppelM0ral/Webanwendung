@@ -20,14 +20,19 @@
 	<jsp:useBean id="framework" class="beans.FrameworkBean" scope="session"/>	
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 	
+
+	
 	<!-- Hier wird die Inhalt aus der Framework Bean geladen, in diesem Fall das Framework für den Aufbau der
 		 gesamten JSP-Struktur(Header/Sidebars/Footer) -->
 	<jsp:getProperty name="framework" property="framework"/>
 	
 	<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
-	<jsp:getProperty name="message" property="infoMessage"/>
-	<jsp:getProperty name="message" property="actionMessage"/>
-			
+	<div id="mainmsg">
+	<jsp:getProperty name="message" property="mainMessage"/>
+	</div>
+	<div id="secondarymsg">
+	<jsp:getProperty name="message" property="secondaryMessage"/>
+	</div>
 			<!-- <div class='content'>
 				<table>
 					<tr>

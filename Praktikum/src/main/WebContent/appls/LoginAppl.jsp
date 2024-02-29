@@ -11,9 +11,10 @@
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->
 	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
+	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 		<%
 			//Übertragung der Daten von LoginView
-			String userid   = request.getParameter("userid");
+			String username   = request.getParameter("username");
 			String password = request.getParameter("password");
 			String btnLogin = request.getParameter("btnLogin");
 			String btnToRegister   = request.getParameter("btnToRegister");
@@ -24,13 +25,17 @@
 			
 			//Login Button wird auf Wert überprüft
 			if (btnLogin.equals("Anmelden")){
-				login.setUserid(userid);
+				login.setUsername(username);
 				login.setPassword(password);
 				try{
-					boolean loginGeklappt = login.checkUseridPassword();
-					if (loginGeklappt){
+					//Existiert ein Account mit den angegebenen Daten?
+					boolean success = login.checkExist();
+					//Ja angemeldet weitergeleitet zur CentralView
+					if (success){
 						login.setLoggedIn(true);
+						message.setLoginWelcome();
 						response.sendRedirect("../views/CentralView.jsp");
+					//Nein unangemeldet wieder zur LoginView(Message muss noch eingefügt werden)
 					}else{
 						login.setLoggedIn(false);
 						response.sendRedirect("../views/LoginView.jsp");		
@@ -40,9 +45,11 @@
 					login.setLoggedIn(false);
 					response.sendRedirect("../views/LoginView.jsp");		
 				}
+			//Button zur Registrierung wird überprüft
 			}else if(btnToRegister.equals("zum Registrieren")){
 				//Daten aus AccountBean löschen
 				response.sendRedirect("../views/RegisterView.jsp");
+			//Fehler also zurück zur LoginView
 			}else{
 				response.sendRedirect("../views/LoginView.jsp");
 			}

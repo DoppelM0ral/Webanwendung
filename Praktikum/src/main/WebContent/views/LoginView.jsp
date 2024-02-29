@@ -32,8 +32,12 @@
 	<jsp:getProperty name="framework" property="framework"/>
 	
 	<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
-	<jsp:getProperty name="message" property="infoMessage"/>
-	<jsp:getProperty name="message" property="actionMessage"/>
+	<div id="mainmsg">
+	<jsp:getProperty name="message" property="mainMessage"/>
+	</div>
+	<div id="secondarymsg">
+	<jsp:getProperty name="message" property="secondaryMessage"/>
+	</div>
 	
 	<!-- Hier wird das Feld für der Login aus der LoginBean geladen -->
 	<jsp:getProperty name="login" property="loginDiv"/>

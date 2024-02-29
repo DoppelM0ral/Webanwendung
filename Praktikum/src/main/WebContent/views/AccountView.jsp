@@ -26,9 +26,13 @@
 	<jsp:getProperty name="framework" property="framework"/>
 	
 	<!-- Hier wird der entsprechend relevante Inhalt der MessageBean geladen -->
-	<jsp:getProperty name="message" property="infoMessage"/>
-	<jsp:getProperty name="message" property="actionMessage"/>
-		
+	<div id="mainmsg">
+	<jsp:getProperty name="message" property="mainMessage"/>
+	</div>
+	<div id="secondarymsg">
+	<jsp:getProperty name="message" property="secondaryMessage"/>
+	</div>
+	<div id="content">
 		<table id="info">
 			<tr>
 				<td colspan="2">Nutzer Informationen</td>
@@ -53,7 +57,8 @@
 				<td>UI-Farbe:</td>
 				<td>grün</td>
 			</tr>
-		</table>	
+		</table>
+	</div>	
 	
 		</div><!-- Dieses </div> schließt ein in der 20. Zeile(FrameworkBean) eröffnetes <div> -->
 	<jsp:getProperty name="framework" property="footer"/>	

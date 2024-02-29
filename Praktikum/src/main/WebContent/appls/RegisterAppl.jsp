@@ -11,6 +11,7 @@
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->
 	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
+	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 		<%
 			//Übertragung der Daten von RegisterView
 			String username   = request.getParameter("username");
@@ -35,6 +36,9 @@
 				account.setLanguage(language);
 				account.setEmail(email);
 				account.insertAccountNoCheck();
+				//Actionmessage wird gesetzt
+				message.setMainMessage("Dein Account wurde erstellt");
+				message.setSecondaryMessage("Jetzt musst du dich nur noch anmelden :)");
 				//Weiterleiten zu LoginView
 				response.sendRedirect("../views/LoginView.jsp");
 			}
