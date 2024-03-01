@@ -20,6 +20,8 @@
 	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
 	<jsp:useBean id="framework" class="beans.FrameworkBean" scope="session"/>	
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
+	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
+
 	
 	<!-- Hier wird die Inhalt aus der Framework Bean geladen, in diesem Fall das Framework für den Aufbau der
 		 gesamten JSP-Struktur(Header/Sidebars/Footer) -->

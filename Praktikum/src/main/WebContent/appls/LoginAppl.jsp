@@ -8,8 +8,7 @@
 		<title>LoginAppl</title>
 	</head>
 	<body>
-	<!-- In diesem Bereich werden die benötigten Beans geladen -->
-	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
+	<!-- In diesem Bereich werden die benötigten Beans geladen -->	
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 		<%
@@ -18,10 +17,12 @@
 			String password = request.getParameter("password");
 			String btnLogin = request.getParameter("btnLogin");
 			String btnToRegister   = request.getParameter("btnToRegister");
+			String btnKey   = request.getParameter("btnKey");
 			
 			//null-check
 			if (btnLogin == null) btnLogin = "";
 			if (btnToRegister == null) btnToRegister = "";
+			if (btnKey == null) btnKey = "";
 			
 			//Login Button wird auf Wert überprüft
 			if (btnLogin.equals("Anmelden")){
@@ -35,9 +36,10 @@
 						login.setLoggedIn(true);
 						message.setLoginWelcome();
 						response.sendRedirect("../views/CentralView.jsp");
-					//Nein unangemeldet wieder zur LoginView(Message muss noch eingefügt werden)
+					//Nein unangemeldet wieder zur LoginView
 					}else{
 						login.setLoggedIn(false);
+						message.setLoginProblem();
 						response.sendRedirect("../views/LoginView.jsp");		
 					}
 				}catch(SQLException se){
@@ -48,8 +50,12 @@
 			//Button zur Registrierung wird überprüft
 			}else if(btnToRegister.equals("zum Registrieren")){
 				//Daten aus AccountBean löschen
+				message.setRegisterWelcome();
 				response.sendRedirect("../views/RegisterView.jsp");
 			//Fehler also zurück zur LoginView
+			}else if(btnKey.equals("btnKey")){
+				message.setGeneralWelcome();
+				response.sendRedirect("../views/LoginView.jsp");
 			}else{
 				response.sendRedirect("../views/LoginView.jsp");
 			}

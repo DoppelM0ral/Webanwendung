@@ -16,13 +16,17 @@ public class LoginBean {
 	public LoginBean() {
 		this.setLoggedIn(false);
 	}
-	public String getLoginCheckRedirectHtml(){
+	//Wenn nicht eingeloggt weiterleitung zu Login
+	public String getLoginRedirect(){
 		String html = "";
 		if (!LoginBean.isLoggedIn()){
-			html = "<meta http-equiv='refresh' content='0; URL=./PortalAppl.jsp'>";
+			html = "<meta http-equiv='refresh' content='0; URL=../views/LoginView.jsp'>";
 		}
 		return html;
 	}
+	
+	//Wenn Login erfolgreich veränderung der MessageBean und weiterleitung zu CentralView
+	
 	//Funktion um zu Überprüfen ob User angelegt ist
 	public boolean checkExist() throws SQLException{
 		String sql = "select username from account where username = ? and password = ?";

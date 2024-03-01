@@ -28,6 +28,7 @@
 			//Login Button wird auf Wert überprüft
 			if (btnToLogin.equals("zum Anmelden")){
 				//Weiterleiten zu LoginView
+				message.setGeneralWelcome();
 				response.sendRedirect("../views/LoginView.jsp");
 			}else if(btnRegister.equals("Registrieren")){
 				//Registrierung durchführen

@@ -19,6 +19,16 @@ public class MessageBean {
 		this.secondaryMessage = "Viel Spaß mit unserem Stadtguide";
 	}
 	
+	public void setLoginProblem() {
+		this.mainMessage = "<h2>Die Kombination aus Nickname und Passwort existiert nicht</h2>";
+		this.secondaryMessage = "Versuche es nocheinmal oder registriere dich";
+	}
+	
+	public void setRegisterWelcome() {
+		this.mainMessage = "<h2>Hier kannst du dich registrieren</h2>";
+		this.secondaryMessage = "Einfach deine Daten eingeben und loslegen";
+	}
+	
 	public String getMessageHtml(){
 		String html = "";
 		html += "<h2>" + this.getMainMessage() + "</h2>";
