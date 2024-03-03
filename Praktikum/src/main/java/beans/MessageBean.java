@@ -19,6 +19,16 @@ public class MessageBean {
 		this.secondaryMessage = "Viel Spaß mit unserem Stadtguide";
 	}
 	
+	public void setAccountWelcome() {
+		this.mainMessage = "<h2>Hier findest du Informationen zu deinem Account</h2>";
+		this.secondaryMessage = "Du kannst sie auch ändern";
+	}
+	
+	public void setCentralHelloMessage() {
+		this.mainMessage = "<h2>Jetzt kannst du loslegen</h2>";
+		this.secondaryMessage = "Suche eine Stadt und schau dir an was sie zu bieten hat oder erweitere sie sogar";
+	}
+	
 	public void setLoginProblem() {
 		this.mainMessage = "<h2>Die Kombination aus Nickname und Passwort existiert nicht</h2>";
 		this.secondaryMessage = "Versuche es nocheinmal oder registriere dich";

@@ -17,12 +17,12 @@
 			String password = request.getParameter("password");
 			String btnLogin = request.getParameter("btnLogin");
 			String btnToRegister   = request.getParameter("btnToRegister");
-			String btnKey   = request.getParameter("btnKey");
+			String btnLog   = request.getParameter("btnLog");
 			
 			//null-check
 			if (btnLogin == null) btnLogin = "";
 			if (btnToRegister == null) btnToRegister = "";
-			if (btnKey == null) btnKey = "";
+			if (btnLog == null) btnLog = "";
 			
 			//Login Button wird auf Wert überprüft
 			if (btnLogin.equals("Anmelden")){
@@ -53,7 +53,7 @@
 				message.setRegisterWelcome();
 				response.sendRedirect("../views/RegisterView.jsp");
 			//Fehler also zurück zur LoginView
-			}else if(btnKey.equals("btnKey")){
+			}else if(btnLog.equals("btnLog")){
 				message.setGeneralWelcome();
 				response.sendRedirect("../views/LoginView.jsp");
 			}else{

@@ -8,13 +8,13 @@
 		<link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
 		<!-- Hier wird die Grundformatierung geladen -->
 		<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
-		<!-- In diesem Bereich werden andere relevante Formatierungen geladen -->
-		
+		<!-- In diesem Bereich wird das zentrale JavaScript geladen -->
+		<script type="text/javascript" src="../javascript/GuideScripts.js"></script>
 		<!-- Hier wird das Icon geladen -->
 		<link rel="icon" type="image/x-icon" href="../content/Icon.png">
 		<title>Stadtguide</title>
 	</head>
-	<body>
+	<body onload="setTimeout(reloadCheck(), 300000)">
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->
 	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
 	<jsp:useBean id="framework" class="beans.FrameworkBean" scope="session"/>	
@@ -35,6 +35,11 @@
 	<div id="secondarymsg">
 	<jsp:getProperty name="message" property="secondaryMessage"/>
 	</div>
+	
+	<form action="../appls/CentralAppl.jsp" method="get" name="reload">
+		<input type="hidden" name="mm" value="<jsp:getProperty name="message" property="mainMessage"/>"/>
+	</form>
+	
 			<!-- <div class='content'>
 				<table>
 					<tr>

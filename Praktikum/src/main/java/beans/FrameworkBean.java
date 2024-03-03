@@ -18,13 +18,13 @@ public class FrameworkBean {
 							+"		<div class='nav'>\n"
 							+"			<header>\n"
 							+"				<nav>\n"
-							+"					<a class='nav' id='left' href='CentralView.jsp'><img class='nav' src='../content/Home.png' alt='Home'></a>\n"
+							+"					<a class='nav' id='left' href='../appls/CentralAppl.jsp?btnHome=btnHome'><img class='nav' src='../content/Home.png' alt='Home'></a>\n"
 							+"					<a class='nav' id='back' href='javascript:history.back()'><img id='back' src='../content/Arrow.png' alt='Arrow'></a>\n";
 		//Check ob eingelogt über die LoginBean, wenn ja kommt ein anderer Link als wenn nicht
 			if(LoginBean.isLoggedIn()) {
-				framework += "					<a class='nav' id='right' href='../appls/CentralAppl.jsp?btnHome=btnHome'><img class='nav' src='../content/User.png' alt='Key'></a\n";
+				framework += "					<a class='nav' id='right' href='../appls/CentralAppl.jsp?btnInfo=btnInfo'><img class='nav' src='../content/User.png' alt='Key'></a\n";
 			}else {
-				framework += "					<a class='nav' id='right' href='../appls/LoginAppl.jsp?btnKey=btnKey'><img class='nav' src='../content/Key.png' alt='Key'></a\n";
+				framework += "					<a class='nav' id='right' href='../appls/LoginAppl.jsp?btnLog=btnLog'><img class='nav' src='../content/Key.png' alt='Key'></a\n";
 			}
 							
 				framework += "					<p>OpenSource Stadt-Guide</p>\n"

@@ -11,9 +11,30 @@
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>	
 		<%
-		String btnHome   = request.getParameter("btnHome");
+		String btnHome	= request.getParameter("btnHome");
+		String btnInfo  = request.getParameter("btnInfo");
+		String reload	= request.getParameter("reload");
 		
-		if(btnHome.equals("btnHome")){
+		if(btnHome	== null){btnHome = "";}
+		if(btnInfo 	== null){btnInfo = "";}
+		if(reload	== null){reload	 = "";}
+		
+		
+		if(btnInfo.equals("btnInfo")){
+			message.setAccountWelcome();
+			response.sendRedirect("../views/AccountView.jsp");
+		}else if(btnHome.equals("btnHome")){
+			if(login.isLoggedIn()){
+				message.setCentralHelloMessage();
+				response.sendRedirect("../views/CentralView.jsp");
+			}else{
+				message.setGeneralWelcome();
+				response.sendRedirect("../views/LoginView.jsp");
+			}	
+		}else if(reload.equals("<h2>Du bist jetzt angemeldet!</h2>")){
+			message.setCentralHelloMessage();
+			response.sendRedirect("../views/CentralView.jsp");
+		}else{
 			message.setGeneralWelcome();
 			response.sendRedirect("../views/CentralView.jsp");
 		}
