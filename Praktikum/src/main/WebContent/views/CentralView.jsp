@@ -14,7 +14,7 @@
 		<link rel="icon" type="image/x-icon" href="../content/Icon.png">
 		<title>Stadtguide</title>
 	</head>
-	<body onload="setTimeout(reloadCheck(), 300000)">
+	<body onload="setTimeout(reloadCheck(), 3000)">
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->
 	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
 	<jsp:useBean id="framework" class="beans.FrameworkBean" scope="session"/>	
@@ -37,7 +37,7 @@
 	</div>
 	
 	<form action="../appls/CentralAppl.jsp" method="get" name="reload">
-		<input type="hidden" name="mm" value="<jsp:getProperty name="message" property="mainMessage"/>"/>
+		<input type="hidden" name="mm" id="mm" value="<jsp:getProperty name="message" property="mainMessage"/>"/>
 	</form>
 	
 			<!-- <div class='content'>

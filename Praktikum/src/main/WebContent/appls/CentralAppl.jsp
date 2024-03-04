@@ -13,11 +13,11 @@
 		<%
 		String btnHome	= request.getParameter("btnHome");
 		String btnInfo  = request.getParameter("btnInfo");
-		String reload	= request.getParameter("reload");
+		String mm	= request.getParameter("mm");
 		
 		if(btnHome	== null){btnHome = "";}
 		if(btnInfo 	== null){btnInfo = "";}
-		if(reload	== null){reload	 = "";}
+		if(mm	== null){mm  = "";}
 		
 		
 		if(btnInfo.equals("btnInfo")){
@@ -31,7 +31,7 @@
 				message.setGeneralWelcome();
 				response.sendRedirect("../views/LoginView.jsp");
 			}	
-		}else if(reload.equals("<h2>Du bist jetzt angemeldet!</h2>")){
+		}else if(mm.equals("<h2>Du bist jetzt angemeldet!</h2>")){
 			message.setCentralHelloMessage();
 			response.sendRedirect("../views/CentralView.jsp");
 		}else{
