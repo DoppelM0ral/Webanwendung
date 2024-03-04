@@ -4,17 +4,26 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<!-- Hier wird die Schriftart geladen -->
-		<link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
-		<!-- Hier wird die Grundformatierung geladen -->
-		<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
-		<!-- In diesem Bereich wird das zentrale JavaScript geladen -->
-		<script type="text/javascript" src="../javascript/GuideScripts.js"></script>
-		<!-- Hier wird das Icon geladen -->
-		<link rel="icon" type="image/x-icon" href="../content/Icon.png">
+			<!-- Hier wird die Schriftart geladen -->
+			<link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+		
+			<!-- Hier wird die Grundformatierung geladen -->
+			<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
+		
+			<!-- In diesem Bereich wird das zentrale JavaScript geladen -->
+			
+			
+			<!-- Hier werden relevante JavaScript Files geladen -->
+			<script type="text/javascript" src="../javascript/ReloadScripts.js"></script>
+			<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
+			<script type="text/javascript" src="../javascript/ButtonScripts.js"></script>
+			
+			<!-- Hier wird das Icon geladen -->
+			<link rel="icon" type="image/x-icon" href="../content/Icon.png">
+		
 		<title>Stadtguide</title>
 	</head>
-	<body onload="setTimeout(reloadCheck(), 3000)">
+	<body>
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->
 	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
 	<jsp:useBean id="framework" class="beans.FrameworkBean" scope="session"/>	
@@ -22,7 +31,14 @@
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 	
 	<!-- Redirect wenn nicht logged in -->
-	<jsp:getProperty name="login" property="loginRedirect"/>
+	<form action="../appls/CentralAppl.jsp" method="get" name="redirect">
+		<input type="hidden" id="loginCheck" name="loginCheck" value="<jsp:getProperty name="login" property="loggedIn"/>"/>
+	</form>
+	<script type="text/javascript">
+		loginFalseCheck();
+	</script>
+	
+	
 	
 	<!-- Hier wird die Inhalt aus der Framework Bean geladen, in diesem Fall das Framework für den Aufbau der
 		 gesamten JSP-Struktur(Header/Sidebars/Footer) -->
@@ -37,8 +53,11 @@
 	</div>
 	
 	<form action="../appls/CentralAppl.jsp" method="get" name="reload">
-		<input type="hidden" name="mm" id="mm" value="<jsp:getProperty name="message" property="mainMessage"/>"/>
+		<input type="hidden" name="msgCheck" id="msgCheck" value='<jsp:getProperty name="message" property="mainMessage"/>'/>
 	</form>
+	<script type="text/javascript">
+		reloadCheck();
+	</script>
 	
 			<!-- <div class='content'>
 				<table>

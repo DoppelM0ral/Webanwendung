@@ -25,7 +25,7 @@ public class MessageBean {
 	}
 	
 	public void setCentralHelloMessage() {
-		this.mainMessage = "<h2>Jetzt kannst du loslegen</h2>";
+		this.mainMessage = "<h2>Du kannst loslegen</h2>";
 		this.secondaryMessage = "Suche eine Stadt und schau dir an was sie zu bieten hat oder erweitere sie sogar";
 	}
 	

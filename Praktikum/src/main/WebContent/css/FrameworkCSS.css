@@ -25,6 +25,7 @@ div.nav{
   	height: 38px;
 	color: white;
 	text-align: center;
+	
 }
 /*Formatierung für die Navigationsbar*/
 nav{
@@ -32,6 +33,11 @@ nav{
 	font-weight:bold;
 	font-size: x-large; 
 }
+
+p{
+	margin: 0;
+}
+
 /*Icon Größen genormt*/
 img.nav{
 	height: 30px;
@@ -129,5 +135,3 @@ footer{
  	color: white;
 
 }
-
-

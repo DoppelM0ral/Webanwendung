@@ -20,10 +20,12 @@
 			String email 	= request.getParameter("email");
 			String btnToLogin	 = request.getParameter("btnToLogin");
 			String btnRegister   = request.getParameter("btnRegister");
+			String loginCheck	= request.getParameter("loginCheck");
 			
 			//null-check
 			if (btnToLogin == null) btnToLogin = "";
 			if (btnRegister == null) btnRegister = "";
+			if (loginCheck == null) loginCheck = "";
 			
 			//Login Button wird auf Wert überprüft
 			if (btnToLogin.equals("zum Anmelden")){
@@ -42,6 +44,11 @@
 				message.setSecondaryMessage("Jetzt musst du dich nur noch anmelden :)");
 				//Weiterleiten zu LoginView
 				response.sendRedirect("../views/LoginView.jsp");
+			}
+			//LoginCheck zurück zur CentralView
+			else if(loginCheck.equals("true")){
+				message.setCentralHelloMessage();
+				response.sendRedirect("../views/CentralView.jsp");
 			}
 		%>	
 	</body>

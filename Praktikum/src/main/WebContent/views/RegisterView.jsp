@@ -4,14 +4,21 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
-		<!-- Hier wird die Schriftart geladen -->
-		<link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
-		<!-- Hier wird die Grundformatierung geladen -->
-		<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
-		<!-- In diesem Bereich werden andere relevante Formatierungen geladen -->
-		<link rel="stylesheet" type="text/css" href="../css/RegisterCSS.css">
-		<!-- Hier wird das Icon geladen -->
-		<link rel="icon" type="image/x-icon" href="../content/Icon.png">
+			<!-- Hier wird die Schriftart geladen -->
+			<link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+			
+			<!-- Hier wird die Grundformatierung geladen -->
+			<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
+			
+			<!-- In diesem Bereich werden andere relevante Formatierungen geladen -->
+			<link rel="stylesheet" type="text/css" href="../css/RegisterCSS.css">
+			
+			<!-- In diesem Bereich wird das zentrale JavaScript geladen -->
+			<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
+			<script type="text/javascript" src="../javascript/ButtonScripts.js"></script>
+			
+			<!-- Hier wird das Icon geladen -->
+			<link rel="icon" type="image/x-icon" href="../content/Icon.png">
 		
 		<title>Stadtguide</title>
 	</head>
@@ -22,6 +29,13 @@
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 
+		<!-- Redirectwenn logged in -->
+	<form action="../appls/RegisterAppl.jsp" method="get" name="redirect">
+		<input type="hidden" id="loginCheck" name="loginCheck" value="<jsp:getProperty name="login" property="loggedIn"/>"/>
+	</form>
+	<script type="text/javascript">
+		loginTrueCheck();
+	</script>
 	
 	<!-- Hier wird die Inhalt aus der Framework Bean geladen, in diesem Fall das Framework für den Aufbau der
 		 gesamten JSP-Struktur(Header/Sidebars/Footer) -->

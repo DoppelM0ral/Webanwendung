@@ -11,20 +11,20 @@ public class LoginBean {
 
 	String username;
 	String password;
-	static boolean loggedIn = false;
+	boolean loggedIn;
 	
 	public LoginBean() {
 		this.setLoggedIn(false);
 	}
 	//Wenn nicht eingeloggt weiterleitung zu Login
-	public String getLoginRedirect(){
-		String html = "";
-		if (!LoginBean.isLoggedIn()){
-			html = "<meta http-equiv='refresh' content='0; URL=../views/LoginView.jsp'>";
-		}
-		return html;
-	}
-	
+//	public String getLoginRedirect(){
+//		String html = "";
+//		if (!LoginBean.isLoggedIn()){
+//			html = "<meta http-equiv='refresh' content='0; URL=../views/LoginView.jsp'>";
+//		}
+//		return html;
+//	}
+//	
 	//Wenn Login erfolgreich veränderung der MessageBean und weiterleitung zu CentralView
 	
 	//Funktion um zu Überprüfen ob User angelegt ist
@@ -51,11 +51,11 @@ public class LoginBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public static boolean isLoggedIn() {
+	public boolean isLoggedIn() {
 		return loggedIn;
 	}
 	public void setLoggedIn(boolean loggedIn) {
-		LoginBean.loggedIn = loggedIn;
+		this.loggedIn = loggedIn;
 	}
 
 	//Div welche den Table zum Login beinhaltet	

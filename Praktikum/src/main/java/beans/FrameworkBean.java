@@ -17,16 +17,12 @@ public class FrameworkBean {
 		//Header mit Buttons
 							+"		<div class='nav'>\n"
 							+"			<header>\n"
-							+"				<nav>\n"
-							+"					<a class='nav' id='left' href='../appls/CentralAppl.jsp?btnHome=btnHome'><img class='nav' src='../content/Home.png' alt='Home'></a>\n"
-							+"					<a class='nav' id='back' href='javascript:history.back()'><img id='back' src='../content/Arrow.png' alt='Arrow'></a>\n";
+							+"				<nav id='navbar'>\n"
+							+"					<a class='nav' id='left' href='../appls/CentralAppl.jsp?btnHome=btnHome'><img class='nav' src='../content/Home.png' alt='Home'></a>\n";
 		//Check ob eingelogt über die LoginBean, wenn ja kommt ein anderer Link als wenn nicht
-			if(LoginBean.isLoggedIn()) {
-				framework += "					<a class='nav' id='right' href='../appls/CentralAppl.jsp?btnInfo=btnInfo'><img class='nav' src='../content/User.png' alt='Key'></a\n";
-			}else {
-				framework += "					<a class='nav' id='right' href='../appls/LoginAppl.jsp?btnLog=btnLog'><img class='nav' src='../content/Key.png' alt='Key'></a\n";
-			}
-							
+				framework += "					<script type='text/javascript'>\n"
+						    +"						buttonCheck();\n"
+						    + "					</script>\n";
 				framework += "					<p>OpenSource Stadt-Guide</p>\n"
 							+"				</nav>\n"	
 							+"			</header>\n"

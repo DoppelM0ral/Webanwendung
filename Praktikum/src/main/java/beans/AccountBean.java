@@ -2,6 +2,7 @@ package beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import jdbc.NoConnectionException;
@@ -104,6 +105,23 @@ public class AccountBean {
 		System.out.println("Account " + this.username + " erfolgreich angelegt");
 	}
 
+	public String getAccountData() throws SQLException{
+		String output="";
+		String sql = "SELECT * FROM account WHERE username = ?";
+		PreparedStatement prep = this.dbConn.prepareStatement(sql);
+		prep.setString(1, this.username);
+		ResultSet dbRes = prep.executeQuery();
+		
+		while(dbRes.next()) {
+			setUsername(dbRes.getString("username"));
+			setEmail(dbRes.getString("email"));
+			setPassword(dbRes.getString("password"));
+			setLanguage(dbRes.getString("language"));
+		}	
+		return output;
+		
+	}
+	
 	
 	//Getter und Setter Methoden für die gegebenen Variablen
 	public boolean isLoggedin() {
