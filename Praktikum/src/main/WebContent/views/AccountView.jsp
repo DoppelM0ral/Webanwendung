@@ -55,19 +55,19 @@
 			</tr>
 			<tr>
 				<td>Nutzername:</td>
-				<td>test</td>
+				<td><jsp:getProperty name="account" property="username"/></td>
 			</tr>
 			<tr>
 				<td>Passwort:</td>
-				<td>Passwort</td>
+				<td><jsp:getProperty name="account" property="password"/></td>
 			</tr>
 			<tr>
 				<td>Email:</td>
-				<td>email@me.de</td>
+				<td><jsp:getProperty name="account" property="email"/></td>
 			</tr>
 			<tr>
 				<td>Sprache:</td>
-				<td>englisch</td>
+				<td><jsp:getProperty name="account" property="language"/></td>
 			</tr>
 			<tr>
 				<td>UI-Farbe:</td>
