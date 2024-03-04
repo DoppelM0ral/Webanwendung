@@ -69,10 +69,7 @@
 				<td>Sprache:</td>
 				<td><jsp:getProperty name="account" property="language"/></td>
 			</tr>
-			<tr>
-				<td>UI-Farbe:</td>
-				<td>grün</td>
-			</tr>
+			
 		</table>	
 	</div>	
 	<jsp:getProperty name="account" property="accountData"/>
