@@ -9,7 +9,7 @@
 		
 			<!-- Hier wird die Grundformatierung geladen -->
 			<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
-		
+			<link rel="stylesheet" type="text/css" href="../css/CentralCSS.css">
 			<!-- In diesem Bereich wird das zentrale JavaScript geladen -->
 			
 			
@@ -17,6 +17,7 @@
 			<script type="text/javascript" src="../javascript/ReloadScripts.js"></script>
 			<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
 			<script type="text/javascript" src="../javascript/ButtonScripts.js"></script>
+			<script type="text/javascript" src="../javascript/SearchScripts.js"></script>
 			
 			<!-- Hier wird das Icon geladen -->
 			<link rel="icon" type="image/x-icon" href="../content/Icon.png">
@@ -29,6 +30,7 @@
 	<jsp:useBean id="framework" class="beans.FrameworkBean" scope="session"/>	
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
+	<jsp:useBean id="city" class="beans.CityBean" scope="session"/>
 	
 	<!-- Redirect wenn nicht logged in -->
 	<form action="../appls/CentralAppl.jsp" method="get" name="redirect">
@@ -59,26 +61,63 @@
 		reloadCheck();
 	</script>
 	
-			<!-- <div class='content'>
-				<table>
-					<tr>
-						<td width="20%">
-							Was suchen sie?<br>
-									<select name="gesucht" onChange="showOption(this)">
-										<option value="">Auswählen</option>
-										<option value="restaurant">Restaurant</option>
-										<option value="unterkunft">Unterkunft</option>
-										<option value="kultur">Kultur</option>
-										<option value="aktivitaet">Aktivität</option>
-									</select>
-						</td>
-					</tr>
-				</table>
-			</div> -->
-			<div>
-				<table>
-				</table>
+			<div id='content'>
+				<form action="../appls/CentralAppl.jsp" method="get" name="searchform">
+					<table>
+						<tr>
+							<td>
+								Möchtest du primär über Postleitzahl oder Stadtnamen suchen?<br>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select id="search" name="search" onChange="showOption(this)">
+											<option value="">Auswählen</option>
+											<option value="cityname">Stadtname</option>
+											<option value="citycode">Postleitzahl</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p class="searchFilter" id="info">
+									Hier findest du alle angelegten Städte
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select class="searchFilter" id="plzsearch" name="plzsearch">
+									<jsp:getProperty name="city" property="allCitysPLZ" />
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<select class="searchFilter" id="namesearch" name="plzsearch">
+									<jsp:getProperty name="city" property="allCitysName" />
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input class='button' type='submit' name='btnSearch' value='Suche starten' />
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<p >
+										Wenn du deine Stadt nicht findest, kannst du sie <a href="../appls/AddCityAppl.jsp?btnNew=btnNew">hier</a> anlegen
+								</p>
+							</td>
+						</tr>
+						
+						
+						
+					</table>
+				</form>
 			</div>
+			
 		</div>
 	<jsp:getProperty name="framework" property="footer"/>	
 	</body>

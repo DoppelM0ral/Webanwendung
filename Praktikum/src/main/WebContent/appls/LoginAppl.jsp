@@ -33,12 +33,13 @@
 				login.setPassword(password);
 				try{
 					//Existiert ein Account mit den angegebenen Daten?
-					boolean success = login.checkExist();
+					boolean success = login.checkLogin();
 					//Ja angemeldet weitergeleitet zur CentralView
 					if (success){
 						login.setLoggedIn(true);
 						message.setLoginWelcome();
 						account.setUsername(username);
+						account.setPassword(password);
 						response.sendRedirect("../views/CentralView.jsp");
 					//Nein unangemeldet wieder zur LoginView
 					}else{

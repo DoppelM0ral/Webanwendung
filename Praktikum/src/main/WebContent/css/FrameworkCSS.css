@@ -67,6 +67,8 @@ a#right{
 	right: 15px;
 }
 
+
+
 /*Formatierung für die linke Sidebar*/
 div.left{
 	position:static;
@@ -95,9 +97,10 @@ div.central{
 }
 /*Formatierung für Content im Zentralen Bereich*/
 div#content{
-	margin-top: 3%;
-	justify-content: center;
-	display: flex;
+	padding-top: 5%;
+    justify-content: center;
+    display: flex;
+    text-align: center;
 }
 
 /*Formatierung von MessageBean Feld(Befindet sich im Zentralen Bereich)*/

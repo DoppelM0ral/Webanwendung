@@ -10,6 +10,7 @@
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->	
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
+	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>
 	
 		<%
 		String btnInfo  = request.getParameter("btnInfo");
@@ -21,7 +22,7 @@
 		
 		if(btnInfo.equals("btnInfo")){
 			message.setAccountWelcome();
-			
+			account.getAccountData();
 			response.sendRedirect("../views/AccountView.jsp");
 		}else if(loginCheck.equals("false")){
 			message.setGeneralWelcome();

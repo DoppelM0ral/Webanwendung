@@ -83,27 +83,41 @@ public class AccountBean {
 		return field;
 	}
 	
-	public boolean checkExists() {
-		boolean exists = true;
-		
-		
-		return exists;
-	}
-	
 	
 	//Legt Account an
-	public void insertAccountNoCheck() throws SQLException{
-		String sql = "insert into account (username, password, language, email) values (?,?,?,?)";
-		System.out.println(sql);
-		PreparedStatement prep = this.dbConn.prepareStatement(sql);
-		prep.setString(1, this.username);
-		prep.setString(2, this.password);
-		prep.setString(3, this.language);
-		prep.setString(4, this.email);
-
-		prep.executeUpdate();
-		System.out.println("Account " + this.username + " erfolgreich angelegt");
+	public void insertAccount() throws SQLException{
+			String sql = "insert into account (username, password, language, email) values (?,?,?,?)";
+			System.out.println(sql);
+			PreparedStatement prep = this.dbConn.prepareStatement(sql);
+			prep.setString(1, this.username);
+			prep.setString(2, this.password);
+			prep.setString(3, this.language);
+			prep.setString(4, this.email);
+			prep.executeUpdate();
+			System.out.println("Account " + this.username + " erfolgreich angelegt");
 	}
+	
+	//Funktion ob User existiert
+	public boolean checkUserExist() throws SQLException{
+		String sql = "select username from account where username = ?";
+		System.out.println(sql);
+		Connection dbConn = new PostgreSQLAccess().getConnection();
+		PreparedStatement prep = dbConn.prepareStatement(sql);
+		prep.setString(1, this.username);
+		ResultSet dbRes = prep.executeQuery();
+		return dbRes.next();
+		}
+	
+	//Funktion ob Email existiert
+		public boolean checkEmailExist() throws SQLException{
+			String sql = "select username from account where email = ?";
+			System.out.println(sql);
+			Connection dbConn = new PostgreSQLAccess().getConnection();
+			PreparedStatement prep = dbConn.prepareStatement(sql);
+			prep.setString(1, this.email);
+			ResultSet dbRes = prep.executeQuery();
+			return dbRes.next();
+			}
 
 	public String getAccountData() throws SQLException{
 		String output="";

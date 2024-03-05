@@ -39,6 +39,21 @@ public class MessageBean {
 		this.secondaryMessage = "Einfach deine Daten eingeben und loslegen";
 	}
 	
+	public void setRegisterSuccess() {
+		this.mainMessage = "<h2>Dein Account wurde erstellt</h2>";
+		this.secondaryMessage = "Jetzt musst du dich nur noch anmelden";
+	}
+	
+	public void setUsernameTaken() {
+		this.mainMessage = "<h2>Dieser Nickname ist bereits vergeben</h2>";
+		this.secondaryMessage = "Versuche es mit einem anderen nocheinmal";
+	}
+	
+	public void setEmailTaken() {
+		this.mainMessage = "<h2>Diese EMail ist bereits vergeben</h2>";
+		this.secondaryMessage = "Versuche es mit einer anderen nocheinmal";
+	}
+	
 	public String getMessageHtml(){
 		String html = "";
 		html += "<h2>" + this.getMainMessage() + "</h2>";

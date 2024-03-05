@@ -83,12 +83,12 @@ public class CityBean {
             existingIds.add(resultSet.getString("AID"));
         }
 
-        // Schleife, um die nächste verfügbare ID zu finden
+        // Schleife, um die nï¿½chste verfï¿½gbare ID zu finden
         int counter = 1;
         while (true) {
             String potentialId = "A" + counter;
             if (!existingIds.contains(potentialId)) {
-                return potentialId; // Die nächste verfügbare ID gefunden
+                return potentialId; // Die nï¿½chste verfï¿½gbare ID gefunden
             }
             counter++;
         }
@@ -128,12 +128,12 @@ public class CityBean {
             existingIds.add(resultSet.getString("RID"));
         }
 
-        // Schleife, um die nächste verfügbare ID zu finden
+        // Schleife, um die nï¿½chste verfï¿½gbare ID zu finden
         int counter = 1;
         while (true) {
             String potentialId = "R" + counter;
             if (!existingIds.contains(potentialId)) {
-                return potentialId; // Die nächste verfügbare ID gefunden
+                return potentialId; // Die nï¿½chste verfï¿½gbare ID gefunden
             }
             counter++;
         }
@@ -153,7 +153,27 @@ public class CityBean {
 		prep.executeUpdate();
 		System.out.println();
 	}
+	
+	public String getAllCitysName() throws SQLException {
+		String output = "";
+		String sql = "select * from city";
+		ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
+		while(dbRes.next()) {
+			output += "<option value="+ dbRes.getString("name") +">" + dbRes.getString("name") + " - " + dbRes.getString("plz") + "</option>\n<br>";
+		}
+		return output;
+	}
 
+	public String getAllCitysPLZ() throws SQLException {
+		String output = "";
+		String sql = "select * from city";
+		ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
+		while(dbRes.next()) {
+			output += "<option value="+ dbRes.getString("plz") +">" + dbRes.getString("plz") + " - " + dbRes.getString("name") + "</option>\n<br>";
+		}
+		return output;
+	}
+	
 	public String getCityName() {
 		return cityName;
 	}

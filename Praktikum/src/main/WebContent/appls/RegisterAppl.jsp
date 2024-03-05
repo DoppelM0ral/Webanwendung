@@ -35,18 +35,31 @@
 			}else if(btnRegister.equals("Registrieren")){
 				//Registrierung durchführen
 				account.setUsername(username);
-				account.setPassword(password);
-				account.setLanguage(language);
 				account.setEmail(email);
-				account.insertAccountNoCheck();
-				//Actionmessage wird gesetzt
-				message.setMainMessage("Dein Account wurde erstellt");
-				message.setSecondaryMessage("Jetzt musst du dich nur noch anmelden :)");
-				//Weiterleiten zu LoginView
-				response.sendRedirect("../views/LoginView.jsp");
-			}
+				if(account.checkUserExist()== false && account.checkEmailExist()== false){
+					account.setPassword(password);
+					account.setLanguage(language);
+					account.insertAccount();
+					//Messagebean wird gesetzt
+					message.setRegisterSuccess();
+					//AccountBean wird gecleart
+					account.initialize();
+					//Weiterleiten zu LoginView
+					response.sendRedirect("../views/LoginView.jsp");
+				}else if(account.checkUserExist()){
+					//Messagebean wird gesetzt
+					message.setUsernameTaken();	
+					//Weiterleiten zu RegisterView
+					response.sendRedirect("../views/RegisterView.jsp");	
+				}else if(account.checkEmailExist()){
+					//Messagebean wird gesetzt
+					message.setEmailTaken();	
+					//Weiterleiten zu RegisterView
+					response.sendRedirect("../views/RegisterView.jsp");	
+				}
+				
 			//LoginCheck zurück zur CentralView
-			else if(loginCheck.equals("true")){
+			}else if(loginCheck.equals("true")){
 				message.setCentralHelloMessage();
 				response.sendRedirect("../views/CentralView.jsp");
 			}

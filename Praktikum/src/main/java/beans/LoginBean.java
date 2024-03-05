@@ -27,8 +27,8 @@ public class LoginBean {
 //	
 	//Wenn Login erfolgreich veränderung der MessageBean und weiterleitung zu CentralView
 	
-	//Funktion um zu Überprüfen ob User angelegt ist
-	public boolean checkExist() throws SQLException{
+	//Funktion um zu Überprüfen ob User und Passwort zusammen angelegt sind
+	public boolean checkLogin() throws SQLException{
 		String sql = "select username from account where username = ? and password = ?";
 		System.out.println(sql);
 		Connection dbConn = new PostgreSQLAccess().getConnection();
@@ -38,6 +38,8 @@ public class LoginBean {
 		ResultSet dbRes = prep.executeQuery();
 		return dbRes.next();
 	}
+	
+	
 
 	public String getUsername() {
 		return username;
