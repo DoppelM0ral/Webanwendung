@@ -38,6 +38,8 @@ public class CityBean {
 	
 	Connection dbConn;
 	
+	//Von Caro Angelegt
+	
 	public CityBean() throws NoConnectionException{
 		this.dbConn = new PostgreSQLAccess().getConnection();
 		this.initialize();
@@ -152,26 +154,6 @@ public class CityBean {
 		prep.setBoolean(6, this.kosha);
 		prep.executeUpdate();
 		System.out.println();
-	}
-	
-	public String getAllCitysName() throws SQLException {
-		String output = "";
-		String sql = "select * from city";
-		ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
-		while(dbRes.next()) {
-			output += "<option value="+ dbRes.getString("name") +">" + dbRes.getString("name") + " - " + dbRes.getString("plz") + "</option>\n<br>";
-		}
-		return output;
-	}
-
-	public String getAllCitysPLZ() throws SQLException {
-		String output = "";
-		String sql = "select * from city";
-		ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
-		while(dbRes.next()) {
-			output += "<option value="+ dbRes.getString("plz") +">" + dbRes.getString("plz") + " - " + dbRes.getString("name") + "</option>\n<br>";
-		}
-		return output;
 	}
 	
 	public String getCityName() {
@@ -334,5 +316,55 @@ public class CityBean {
 						"		</div>";
 		return addCityDiv;
 	}
+	
+	
+	//Von Kai Angelegt
+	public String getAllCitysName() throws SQLException {
+		String output = "";
+		String sql = "SELECT * FROM city";
+		ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
+		while(dbRes.next()) {
+			output += "<option value="+ dbRes.getString("name") +">" + dbRes.getString("name") + " - " + dbRes.getString("plz") + "</option>\n<br>";
+		}
+		return output;
+	}
+
+	public String getAllCitysPLZ() throws SQLException {
+		String output = "";
+		String sql = "SELECT* FROM city";
+		ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
+		while(dbRes.next()) {
+			output += "<option value="+ dbRes.getString("plz") +">" + dbRes.getString("plz") + " - " + dbRes.getString("name") + "</option>\n<br>";
+		}
+		return output;
+	}
+	
+	public void selectCityWithPLZ(String plz) throws SQLException {
+		String sql = "SELECT * FROM city WHERE plz = ?";
+		PreparedStatement prep = this.dbConn.prepareStatement(sql);
+		prep.setString(1, plz);
+		ResultSet dbRes = prep.executeQuery();
+		while(dbRes.next()) {
+			setPlz(dbRes.getString("plz"));
+			setCityName(dbRes.getString("name"));
+			setPopulation(dbRes.getString("population"));
+		}
+	}
+	
+	public void selectCityWithName(String name) throws SQLException {
+		String sql = "SELECT * FROM city WHERE name = ?";
+		PreparedStatement prep = this.dbConn.prepareStatement(sql);
+		prep.setString(1, name);
+		ResultSet dbRes = prep.executeQuery();
+		while(dbRes.next()) {
+			setPlz(dbRes.getString("plz"));
+			setCityName(dbRes.getString("name"));
+			setPopulation(dbRes.getString("population"));
+		}
+	}
+	
+	
+
+
 	
 }

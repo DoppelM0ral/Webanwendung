@@ -10,16 +10,21 @@
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->	
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>	
+	<jsp:useBean id="city" class="beans.CityBean" scope="session"/>
 		<%
-		String btnHome	= request.getParameter("btnHome");
-		String btnInfo  = request.getParameter("btnInfo");
+		String btnHome		= request.getParameter("btnHome");
+		String btnInfo  	= request.getParameter("btnInfo");
+		String btnSearch	= request.getParameter("btnSearch");
 		String loginCheck	= request.getParameter("loginCheck");
-		String msgCheck	= request.getParameter("msgCheck");
+		String msgCheck		= request.getParameter("msgCheck");
+		String plzsearch	= request.getParameter("plzsearch");
+		String namesearch	= request.getParameter("namesearch");
 		
-		if(btnHome	== null){btnHome = "";}
-		if(btnInfo 	== null){btnInfo = "";}
+		if(btnHome		== null){btnHome = "";}
+		if(btnInfo 		== null){btnInfo = "";}
+		if(btnSearch	== null){btnSearch= "";}
 		if(loginCheck	== null){loginCheck  = "";}
-		if(msgCheck	== null){msgCheck  = "";}
+		if(msgCheck		== null){msgCheck  = "";}
 		
 		if(btnInfo.equals("btnInfo")){
 			message.setAccountWelcome();
@@ -31,6 +36,14 @@
 			}else{
 				message.setGeneralWelcome();
 				response.sendRedirect("../views/LoginView.jsp");
+			}	
+		}else if(btnSearch.equals("Wechseln zur Stadt")){
+			if(plzsearch != null){
+				city.selectCityWithPLZ(plzsearch);
+				response.sendRedirect("../views/CityView.jsp");
+			}else if(namesearch != null){
+				city.selectCityWithName(namesearch);
+				response.sendRedirect("../views/CityView.jsp");
 			}	
 		}else if(loginCheck.equals("false")){
 			message.setGeneralWelcome();

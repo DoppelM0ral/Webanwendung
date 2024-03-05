@@ -94,14 +94,14 @@
 						</tr>
 						<tr>
 							<td>
-								<select class="searchFilter" id="namesearch" name="plzsearch">
+								<select class="searchFilter" id="namesearch" name="namesearch">
 									<jsp:getProperty name="city" property="allCitysName" />
 								</select>
 							</td>
 						</tr>
 						<tr>
 							<td>
-								<input class='button' type='submit' name='btnSearch' value='Suche starten' />
+								<input class="button" type="submit" name="btnSearch" value="Wechseln zur Stadt" />
 							</td>
 						</tr>
 						<tr>
