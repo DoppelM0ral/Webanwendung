@@ -44,15 +44,7 @@ public class FrameworkBean {
 		//Footer mit generellen Informationen
 		String footer = ""
 					+ "<footer>\n"
-					+ "		<p>Generelle Innformationen muss noch gefüllt werden</p>\n"
-					+ "		<p>Generelle Innformationen muss noch gefüllt werden</p>\n"
-					+ "		<p>Generelle Innformationen muss noch gefüllt werden</p>\n"
-					+ "		<p>Generelle Innformationen muss noch gefüllt werden</p>\n"
-					+ "		<p>Generelle Innformationen muss noch gefüllt werden</p>\n"
-					+ "		<p>Generelle Innformationen muss noch gefüllt werden</p>\n"
-					+ "		<p>Generelle Innformationen muss noch gefüllt werden</p>\n"
-					+ "		<p>Generelle Innformationen muss noch gefüllt werden</p>\n"
-					+ "		<p>Generelle Innformationen muss noch gefüllt werden</p>\n"
+					+ "		test\n"
 					+ "	</footer>\n";
 		return footer;
 	}
