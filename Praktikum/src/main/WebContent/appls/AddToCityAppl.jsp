@@ -12,6 +12,7 @@
 	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 	<jsp:useBean id="city" class="beans.CityBean" scope="session"/>
+	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 	<jsp:useBean id="add" class="beans.AddBean" scope="session"/>
 	
 		<!-- Redirect wenn nicht logged in -->
@@ -93,9 +94,9 @@
 					add.setKosha(booleankosha);
 					add.createRestaurant();
 					add.createBase();
+					message.setAddResSuccess(); 
 					
 					response.sendRedirect("../views/CityView.jsp");
-					
 				}else if(btnAdd.equals("Unterkunft anlegen")){
 					add.setType(type);
 					add.setPets(booleanpets);
@@ -103,7 +104,7 @@
 					add.setRest(booleanrest);
 					add.createAccommodation();
 					add.createBase();
-					
+					message.setAddAccSuccess();
 					
 					response.sendRedirect("../views/CityView.jsp");
 				}	

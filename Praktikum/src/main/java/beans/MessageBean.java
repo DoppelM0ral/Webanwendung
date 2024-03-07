@@ -29,6 +29,16 @@ public class MessageBean {
 		this.secondaryMessage = "Suche eine Stadt und schau dir an was sie zu bieten hat oder erweitere sie sogar";
 	}
 	
+	public void setAddResSuccess() {
+		this.mainMessage = "<h2>Dein Restaurant wurde angelegt</h2>";
+		this.secondaryMessage = "Du kannst es jetzt über die Suche finden";
+	}
+	
+	public void setAddAccSuccess() {
+		this.mainMessage = "<h2>Deine Unterkunft wurde angelegt</h2>";
+		this.secondaryMessage = "Du kannst sie jetzt über die Suche finden";
+	}
+	
 	public void setLoginProblem() {
 		this.mainMessage = "<h2>Die Kombination aus Nickname und Passwort existiert nicht</h2>";
 		this.secondaryMessage = "Versuche es nocheinmal oder registriere dich";
