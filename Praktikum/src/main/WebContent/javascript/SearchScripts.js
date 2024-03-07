@@ -8,12 +8,14 @@ function showOption(option){
 	document.getElementById("info").style.display = "block";
 	if(option.value == "cityname"){
 		document.getElementById("namesearch").style.display = "block";
+		document.getElementById("namesearch").removeAttribute("disabled")
 		document.getElementById("plzsearch").style.display = "none";
 		document.getElementById("plzsearch").setAttribute("disabled","disabled");
 	}else if(option.value == "citycode"){
 		document.getElementById("namesearch").style.display = "none";
 		document.getElementById("namesearch").setAttribute("disabled","disabled");
 		document.getElementById("plzsearch").style.display = "block";
+		document.getElementById("plzsearch").removeAttribute("disabled");
 	}
 }
 
@@ -29,21 +31,39 @@ function showSpecific(option){
 	
 	//Wechsel der angezeigten und genutzen Inputs
 	if(option.value == "Restaurant"){
-		document.getElementById("restaurant").style.display = "table-cell";
-		document.getElementById("restaurant").removeAttribute("disabled");
-		document.getElementById("accommodation").style.display = "none";
-		document.getElementById("accommodation").setAttribute("disabled","disabled");
-		document.getElementById("accKind").style.display = "none";
-		document.getElementById("accKind").setAttribute("disabled","disabled");
+	
+		for (const element of document.getElementsByClassName("restaurant")){
+  		element.style.display="table-cell";
+  		element.removeAttribute("disabled");
+	}
+		for (const element of document.getElementsByClassName("accommodation")){
+  		element.style.display="none";
+  		element.setAttribute("disabled","disabled");
+	}
+
+
 	}else if(option.value == "Unterkunft"){
-		document.getElementById("restaurant").style.display = "none";
-		document.getElementById("restaurant").setAttribute("disabled","disabled");
-		document.getElementById("accommodation").style.display = "table-cell";
-		document.getElementById("accommodation").removeAttribute("disabled");
-		document.getElementById("accKind").style.display = "table-row";
-		document.getElementById("accKind").removeAttribute("disabled");
+		
+		for (const element of document.getElementsByClassName("restaurant")){
+  		element.style.display="none";
+  		element.setAttribute("disabled","disabled");
+	}
+		for (const element of document.getElementsByClassName("accommodation")){
+  		element.style.display="table-cell";
+  		element.removeAttribute("disabled");
+	}
 	}
 	
 	//Button Wert an ausgewählten Input anpassen
 	document.getElementById("submit").value = ""+ option.value +" anlegen";
+	
+	//
+	document
+}
+
+window.addEventListener("resize", resize)
+
+function resize(){
+	document.getElementById("leftbar").style.height.va = document.getElementById("central").style.height.valueOf;
+	document.getElementById("rightbar").style.height = document.getElementById("central").style.height.valueOf;
 }

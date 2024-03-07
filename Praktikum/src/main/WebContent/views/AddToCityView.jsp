@@ -85,6 +85,11 @@
 					</td>
 				</tr>
 				<tr>
+					<td>
+						<input type="hidden" name="plz" value="<jsp:getProperty name='city' property='plz'/>">
+					</td>
+				</tr>
+				<tr>
 					<td class="basicinfo">
 						Straße:
 					</td>
@@ -105,7 +110,7 @@
 						Preisniveua: 
 					</td>
 					<td class="basicinfo">
-						 <select name="type">
+						 <select name="price">
 							<option>Günstig </option>
 							<option>Normal </option>
 							<option>Teuer </option>
@@ -120,22 +125,22 @@
 				</tr>
 				<!-- Restaurant -->
 				<tr>
-					<td class="basicinfo" id="restaurant" colspan="2">
-						<input type="checkbox" id="veg" name="veg" value="veg"> Vegetarisch<br>
-						<input type="checkbox" id="vegan" name="vegan" value="vegan"> Vegan<br>
-						<input type="checkbox" id="pesc" name="pesc" value="pesc"> Pescetarisch<br>
-						<input type="checkbox" id="halal" name="halal" value="halal"> Halal<br>
-						<input type="checkbox" id="kosha" name="kosha" value="kosha"> Kosha<br>
+					<td class="basicinfo restaurant" colspan="2">
+						<input class="restaurant" type="checkbox" id="veg" name="veg" value="veg"> Vegetarisch<br>
+						<input class="restaurant" type="checkbox" id="vegan" name="vegan" value="vegan"> Vegan<br>
+						<input class="restaurant" type="checkbox" id="pesc" name="pesc" value="pesc"> Pescetarisch<br>
+						<input class="restaurant" type="checkbox" id="halal" name="halal" value="halal"> Halal<br>
+						<input class="restaurant" type="checkbox" id="kosha" name="kosha" value="kosha"> Kosha<br>
 						
 					</td>
 				</tr>
 				<!-- Accommodation -->
-				<tr id="accKind">
-					<td class="basicinfo">
+				<tr class="accommodation" >
+					<td class="basicinfo accommodation">
 						Unterkunftsart: 
 					</td>
-					<td class="basicinfo" >
-						 <select name="type">
+					<td class="basicinfo accommodation" >
+						 <select class="accommodation"  name="type">
 							<option>AirBnB</option>
 							<option>Hotel</option>
 							<option>Motel</option>
@@ -143,17 +148,17 @@
 					</td>
 				</tr>
 				<tr>
-					<td class="basicinfo" id="accommodation" colspan="2">
+					<td class="basicinfo accommodation" colspan="2">
 						
-						<input type="checkbox" id="pets" name="pets" value="pets"> Haustiere erlaubt<br>
-						<input type="checkbox" id="kids" name="kids" value="kids"> Kinderbetreung<br>
-						<input type="checkbox" id="rest" name="rest" value="rest"> Restaurant inkl.<br>
+						<input class="accommodation" type="checkbox" id="pets" name="pets" value="pets"> Haustiere erlaubt<br>
+						<input class="accommodation" type="checkbox" id="kids" name="kids" value="kids"> Kinderbetreung<br>
+						<input class="accommodation" type="checkbox" id="rest" name="rest" value="rest"> Restaurant inkl.<br>
 						
 					</td>
 				</tr>
 				<tr>
 					<td class="basicinfo info" colspan="2">
-						<input type="submit" class="button" id="submit" name="btnAdd" value="Anlegen"/>
+						<input type="submit" class="button" id="submit" name="btnAdd" value=""/>
 					</td>
 				</tr>
 			</table>

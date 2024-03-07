@@ -9,36 +9,29 @@ public class FrameworkBean {
 	public String getFramework(){
 		String framework = 	 ""
 		//Linke Sidebar
-							+"	<div class='left'>\n"
+							+"	<div id='leftbar'>\n"
 							+"		</div>\n"
 		//Rechte Sidebar
-							+"		<div class='right'>\n"
+							+"		<div id='rightbar'>\n"
 							+"		</div>\n"
 		//Header mit Buttons
-							+"		<div class='nav'>\n"
+							+"		<div id='navbar'>\n"
 							+"			<header>\n"
-							+"				<nav id='navbar'>\n"
+							+"				<nav id='navibar'>\n"
+							+"					<p id='nav'>OpenSource Stadt-Guide</p>\n"
 							+"					<a class='nav' id='left' href='../appls/CentralAppl.jsp?btnHome=btnHome'><img class='nav' src='../content/Home.png' alt='Home'></a>\n";
 		//Check ob eingelogt über die LoginBean, wenn ja kommt ein anderer Link als wenn nicht
 				framework += "					<script type='text/javascript'>\n"
 						    +"						buttonCheck();\n"
-						    + "					</script>\n";
-				framework += "					<p>OpenSource Stadt-Guide</p>\n"
-							+"				</nav>\n"	
+						    +"					</script>\n";
+				framework += "				</nav>\n"	
 							+"			</header>\n"
 							+"			</div>\n"
 		//Zentrale div mit dem tatsächlichem Content der Website
-							+"		<div class='central'>\n";
-						
-			
-
-			
-			
-			
-			
-			
+							+"		<div id='central'>\n";		
 	return framework;
 	}
+	
 	
 	public String getFooter() {
 		//Footer mit generellen Informationen

@@ -17,7 +17,7 @@ body{
 	}
 
 /*Formatierung für den Header Div*/
-div.nav{
+div#navbar{
 	position: fixed;
 	top: 0;
 	background-color: rgb(64, 64, 64);
@@ -34,7 +34,7 @@ nav{
 	font-size: x-large; 
 }
 
-p{
+p#nav{
 	margin: 0;
 }
 
@@ -70,30 +70,29 @@ a#right{
 
 
 /*Formatierung für die linke Sidebar*/
-div.left{
+div#leftbar{
 	position:static;
 	float:left;
 	background-color: rgb(4, 170, 109);
-    width: 15%;
-    height: inherit;
+    width: 15vw;
+    height: 100vh;
 
 }
 /*Formatierung für die rechte Sidebar*/
-div.right{
+div#rightbar{
 	position:static;
 	float:right;
 	background-color: rgb(4, 170, 109);
-    width: 15%;
-    height: 100%;
+    width: 15vw;
+    height: 100vh; 
 }
 /*Formatierung für den Zentralen Bereich*/
-div.central{
-	position:static;
-	margin-top: 38px;
-	margin-left: 15%;
+div#central{
+	display: inline;
 	background-color:white;
     width: 70%;
     height: 95%;
+    overflow: auto;
 }
 /*Formatierung für Content im Zentralen Bereich*/
 div#content{

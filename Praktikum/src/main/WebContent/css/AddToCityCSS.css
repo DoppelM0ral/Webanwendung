@@ -9,10 +9,11 @@
 	text-align: center;
 }
 
-p{
+p.content{
 	margin-top: 10%;
 	margin-bottom: 10%;
 }
+
 
 #submit{
 	margin-top: 10%;
