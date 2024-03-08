@@ -30,26 +30,32 @@ public class AddBean {
 	String btnAdd;
 	Connection dbConn;	
 	
+	
 	public AddBean() throws NoConnectionException{
 		this.dbConn = new PostgreSQLAccess().getConnection();
 	}
 	
+
 	
-	public void createBase() throws SQLException {
-		String sql = "INSERT INTO base (refid, reference, name, plz, street, housenumber, prices) values (?,?,?,?,?,?,?)";
-		PreparedStatement prep = this.dbConn.prepareStatement(sql);
-		prep.setInt(1, this.ID);
-		prep.setString(2, this.search);
-		prep.setString(3, this.name);
-		prep.setString(4, this.plz);
-		prep.setString(5, this.street);
-		prep.setString(6, this.housenumber);
-		prep.setString(7, this.price);
+	//Funktion Unterkunft anlegen
+	public void createAccommodation() throws SQLException {
+		String sql = "INSERT INTO accommodation (type, animals, childcare, restaurant) values (?,?,?,?)";
+		PreparedStatement prep = this.dbConn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+		prep.setString(1, this.type);
+		prep.setBoolean(2, this.pets);
+		prep.setBoolean(3, this.kids);
+		prep.setBoolean(4, this.rest);
 		prep.executeUpdate();
-		System.out.println("Base " + this.name +  " erfolgreich angelegt");
+		System.out.println("Unterkunft " + this.name +  " erfolgreich angelegt");
+		
+		ResultSet dbRes = prep.getGeneratedKeys();
+
+		while(dbRes.next()) {
+			this.ID = dbRes.getInt("refid");
 		}
+	}
 	
-	
+	//Funktion Restaurant in Datenbank anlegen
 	public void createRestaurant() throws SQLException {
 		String sql = "INSERT INTO restaurant (vegetarian, vegan, pescetarian, halal, kosha) values (?,?,?,?,?)";
 		PreparedStatement prep = this.dbConn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -69,30 +75,54 @@ public class AddBean {
 		
 	}
 	
-	
-	public void createAccommodation() throws SQLException {
-		String sql = "INSERT INTO accommodation (type, animals, childcare, restaurant) values (?,?,?,?)";
-		PreparedStatement prep = this.dbConn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
-		prep.setString(1, this.type);
-		prep.setBoolean(2, this.pets);
-		prep.setBoolean(3, this.kids);
-		prep.setBoolean(4, this.rest);
+	//Funktion Basisinformationen anlegen
+	public void createBase() throws SQLException {
+		String sql = "INSERT INTO base (refid, reference, name, plz, street, housenumber, prices) values (?,?,?,?,?,?,?)";
+		PreparedStatement prep = this.dbConn.prepareStatement(sql);
+		prep.setInt(1, this.ID);
+		prep.setString(2, this.search);
+		prep.setString(3, this.name);
+		prep.setString(4, this.plz);
+		prep.setString(5, this.street);
+		prep.setString(6, this.housenumber);
+		prep.setString(7, this.price);
 		prep.executeUpdate();
-		System.out.println("Unterkunft " + this.name +  " erfolgreich angelegt");
-		
-		ResultSet dbRes = prep.getGeneratedKeys();
-
-		while(dbRes.next()) {
-			this.ID = dbRes.getInt("refid");
-		}
+		System.out.println("Base " + this.name +  " erfolgreich angelegt");
 	}
 	
-
-	//Funktion Restaurant in Datenbank anlegen
+	//Check ob schon angelegt
+	public boolean checkAdressExist() throws SQLException{
+		String sql = "SELECT * FROM base WHERE (plz, street, housenumber) = (?,?,?)";
+		PreparedStatement prep = this.dbConn.prepareStatement(sql);
+		prep.setString(1, this.plz);
+		prep.setString(2, this.street);
+		prep.setString(3, this.housenumber);
+		ResultSet dbRes = prep.executeQuery();	
+		return dbRes.next();
+	}
 	
+	//Setzt alle Strings auf null, Ints auf 0, und Booleans auf false
+	public void whipeValues(){
+		this.search 	 = null; 		
+		this.name 		 = null;
+		this.street 	 = null; 		
+		this.housenumber = null; 	
+		this.price 		 = null; 	
+		this.veg 		 = false;		
+		this.vegan 		 = false; 		
+		this.pesc 		 = false; 		
+		this.halal 		 = false; 	
+		this.kosha 		 = false;	
+		this.type 		 = null; 	
+		this.pets 		 = false; 	
+		this.kids 		 = false; 	
+		this.rest		 = false;
+		this.plz 		 = null;
+		this.ID 		 = 0;
+		this.btnAdd		 = null;
+	}
 	
 	//Getter und Setter
-
 	public String getPlz() {
 		return plz;
 	}

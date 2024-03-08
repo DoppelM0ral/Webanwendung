@@ -4,18 +4,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="ISO-8859-1">		
+		<meta charset="ISO-8859-1">	
+			
+		<!-- Login Redirect Script -->
+		<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
+		
 		<title>Stadt Erweitern</title>
 	</head>
 	<body>
 	<!-- In diesem Bereich werden die benötigten Beans geladen -->
-	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 	<jsp:useBean id="city" class="beans.CityBean" scope="session"/>
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 	<jsp:useBean id="add" class="beans.AddBean" scope="session"/>
 	
-		<!-- Redirect wenn nicht logged in -->
+	<!-- Redirect wenn nicht logged in -->
 	<form action="../appls/CentralAppl.jsp" method="get" name="redirect">
 		<input type="hidden" id="loginCheck" name="loginCheck" value="<jsp:getProperty name="login" property="loggedIn"/>"/>
 	</form>
@@ -23,6 +26,7 @@
 		loginFalseCheck();
 	</script>
 	
+		<!-- Inhalt Java Funktionen -->
 		<%
 			//HTTP Übernahme
 			String search 		= request.getParameter("search");
@@ -86,28 +90,55 @@
 				add.setHousenumber(housenumber);
 				add.setPrice(price);
 				
+				//Check ob Restaurant angelegt wird
 				if(btnAdd.equals("Restaurant anlegen")){
 					add.setVeg(booleanveg);
 					add.setVegan(booleanvegan);
 					add.setPesc(booleanpesc);
 					add.setHalal(booleanhalal);
 					add.setKosha(booleankosha);
-					add.createRestaurant();
-					add.createBase();
-					message.setAddResSuccess(); 
+					//Check ob Adresse schon angelegt wurde
+					if(!add.checkAdressExist()){
+						add.createRestaurant();
+						add.createBase();
+						message.setAddResSuccess(); 
+						add.whipeValues();
+						
+						response.sendRedirect("../views/CityView.jsp");
+					}else{
+						message.setRestExists();
+						
+						response.sendRedirect("../views/AddToCityView.jsp");
+					}
 					
-					response.sendRedirect("../views/CityView.jsp");
-				}else if(btnAdd.equals("Unterkunft anlegen")){
+					
+				}
+				//Check ob Unterkunft angelegt wird
+				else if(btnAdd.equals("Unterkunft anlegen")){
 					add.setType(type);
 					add.setPets(booleanpets);
 					add.setKids(booleankids);
 					add.setRest(booleanrest);
-					add.createAccommodation();
-					add.createBase();
-					message.setAddAccSuccess();
+					//Check ob Adresse schon angelegt wurde
+					if(!add.checkAdressExist()){
+						add.createAccommodation();
+						add.createBase();
+						message.setAddAccSuccess(); 
+						add.whipeValues();
+						
+						response.sendRedirect("../views/CityView.jsp");
+					}else{
+						message.setAccExists();
+						
+						response.sendRedirect("../views/AddToCityView.jsp");
+					}
+				}
+				//Zurückleitung weil Fehler
+				else{
+					message.setBug();
 					
-					response.sendRedirect("../views/CityView.jsp");
-				}	
+					response.sendRedirect("../views/AddToCityView.jsp");
+				}
 			}
 			
 		

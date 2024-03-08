@@ -4,6 +4,10 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
+		
+		<!-- Login Redirect Script -->
+		<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
+		
 		<title>AccountAppl</title>
 	</head>
 	<body>
@@ -12,25 +16,32 @@
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>
 	
+	<!-- Redirect wenn nicht logged in -->
+	<form action="../appls/CentralAppl.jsp" method="get" name="redirect">
+		<input type="hidden" id="loginCheck" name="loginCheck" value="<jsp:getProperty name="login" property="loggedIn"/>"/>
+	</form>
+	<script type="text/javascript">
+		loginFalseCheck();
+	</script>
+	
+		<!-- Inhalt Java Funktionen -->
 		<%
-		String btnInfo  = request.getParameter("btnInfo");
-		String loginCheck	= request.getParameter("loginCheck");
-
-		if(btnInfo 	== null){btnInfo = "";}
-		if(loginCheck	== null){loginCheck  = "";}
-
-		
-		if(btnInfo.equals("btnInfo")){
-			message.setAccountWelcome();
-			account.getAccountData();
-			response.sendRedirect("../views/AccountView.jsp");
-		}else if(loginCheck.equals("false")){
-			message.setGeneralWelcome();
-			response.sendRedirect("../views/LoginView.jsp");
-		}else{
-			message.setGeneralWelcome();
-			response.sendRedirect("../views/CentralView.jsp");
-		}
+			//HTTP Übernahme
+			String btnInfo  = request.getParameter("btnInfo");	
+	
+			//null-check
+			if(btnInfo 	== null)	{btnInfo = "";}
+	
+			//Tatsächliche Verarbeitung
+			if(btnInfo.equals("btnInfo")){
+				message.setAccountWelcome();
+				account.getAccountData();
+				response.sendRedirect("../views/AccountView.jsp");
+			}else{
+				message.setAccountWelcome();
+				account.getAccountData();
+				response.sendRedirect("../views/AccountView.jsp");
+			}
 			
 		%>	
 	</body>

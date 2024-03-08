@@ -5,6 +5,10 @@
 <html>
 	<head>
 		<meta charset="ISO-8859-1">
+		
+		<!-- Login Redirect Script -->
+		<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
+		
 		<title>RegisterAppl</title>
 	</head>
 	<body>
@@ -12,20 +16,28 @@
 	<jsp:useBean id="account" class="beans.AccountBean" scope="session"/>	
 	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
+	
+	<!-- Redirect wenn nicht logged in -->
+	<form action="../appls/CentralAppl.jsp" method="get" name="redirect">
+		<input type="hidden" id="loginCheck" name="loginCheck" value="<jsp:getProperty name="login" property="loggedIn"/>"/>
+	</form>
+	<script type="text/javascript">
+		loginFalseCheck();
+	</script>
+	
+		<!-- Inhalt Java Funktionen -->
 		<%
-			//Übertragung der Daten von RegisterView
+			//HTTP Übernahme
 			String username   = request.getParameter("username");
 			String password = request.getParameter("password");
 			String language = request.getParameter("language");
 			String email 	= request.getParameter("email");
 			String btnToLogin	 = request.getParameter("btnToLogin");
 			String btnRegister   = request.getParameter("btnRegister");
-			String loginCheck	= request.getParameter("loginCheck");
 			
 			//null-check
 			if (btnToLogin == null) btnToLogin = "";
 			if (btnRegister == null) btnRegister = "";
-			if (loginCheck == null) loginCheck = "";
 			
 			//Login Button wird auf Wert überprüft
 			if (btnToLogin.equals("zum Anmelden")){
@@ -57,11 +69,6 @@
 					//Weiterleiten zu RegisterView
 					response.sendRedirect("../views/RegisterView.jsp");	
 				}
-				
-			//LoginCheck zurück zur CentralView
-			}else if(loginCheck.equals("true")){
-				message.setCentralHelloMessage();
-				response.sendRedirect("../views/CentralView.jsp");
 			}
 		%>	
 	</body>

@@ -86,7 +86,7 @@ public class AccountBean {
 	
 	//Legt Account an
 	public void insertAccount() throws SQLException{
-			String sql = "insert into account (username, password, language, email) values (?,?,?,?)";
+			String sql = "INSERT INTO account (username, password, language, email) VALUES (?,?,?,?)";
 			System.out.println(sql);
 			PreparedStatement prep = this.dbConn.prepareStatement(sql);
 			prep.setString(1, this.username);
@@ -99,7 +99,7 @@ public class AccountBean {
 	
 	//Funktion ob User existiert
 	public boolean checkUserExist() throws SQLException{
-		String sql = "select username from account where username = ?";
+		String sql = "SELECT username FROM account WHERE username = ?";
 		System.out.println(sql);
 		Connection dbConn = new PostgreSQLAccess().getConnection();
 		PreparedStatement prep = dbConn.prepareStatement(sql);
@@ -110,7 +110,7 @@ public class AccountBean {
 	
 	//Funktion ob Email existiert
 		public boolean checkEmailExist() throws SQLException{
-			String sql = "select username from account where email = ?";
+			String sql = "SELECT username FROM account WHERE email = ?";
 			System.out.println(sql);
 			Connection dbConn = new PostgreSQLAccess().getConnection();
 			PreparedStatement prep = dbConn.prepareStatement(sql);

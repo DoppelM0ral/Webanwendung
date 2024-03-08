@@ -8,13 +8,13 @@ public class FrameworkBean {
 
 	public String getFramework(){
 		String framework = 	 ""
-		//Linke Sidebar
+							//Linke Sidebar
 							+"	<div id='leftbar'>\n"
 							+"		</div>\n"
-		//Rechte Sidebar
+							//Rechte Sidebar
 							+"		<div id='rightbar'>\n"
 							+"		</div>\n"
-		//Header mit Buttons
+							//Header mit Buttons
 							+"		<div id='navbar'>\n"
 							+"			<header>\n"
 							+"				<nav id='navibar'>\n"
@@ -32,9 +32,8 @@ public class FrameworkBean {
 	return framework;
 	}
 	
-	
+	//Footer mit generellen Informationen
 	public String getFooter() {
-		//Footer mit generellen Informationen
 		String footer = ""
 					+ "<footer>\n"
 					+ "		test\n"
