@@ -49,28 +49,28 @@
 	<jsp:getProperty name="message" property="secondaryMessage"/>
 	</div>
 	<div id="content">
-		<table id="info">
-			<tr>
-				<td colspan="2">Nutzer Informationen</td>
-			</tr>
-			<tr>
-				<td>Nutzername:</td>
-				<td><jsp:getProperty name="account" property="username"/></td>
-			</tr>
-			<tr>
-				<td>Passwort:</td>
-				<td><jsp:getProperty name="account" property="password"/></td>
-			</tr>
-			<tr>
-				<td>Email:</td>
-				<td><jsp:getProperty name="account" property="email"/></td>
-			</tr>
-			<tr>
-				<td>Sprache:</td>
-				<td><jsp:getProperty name="account" property="language"/></td>
-			</tr>
-			
-		</table>	
+		<form action="../appls/AccountAppl.jsp" method="get" name="accountform">
+			<table id="info">
+				<tr>
+					<td colspan="2">Nutzer Informationen</td>
+				</tr>
+				<tr>
+					<td>Nutzername:</td>
+					<td><jsp:getProperty name="account" property="username"/></td>
+				</tr>
+				<tr>
+					<td>Passwort:</td>
+					<td><jsp:getProperty name="account" property="password"/></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><jsp:getProperty name="account" property="email"/></td>
+				</tr>
+	            <tr>
+	                <td colspan="2"><input class="button" type="submit" name="btnLogout" value="Abmelden"/></td>
+	            </tr>
+			</table>	
+		</form>
 	</div>	
 	<jsp:getProperty name="account" property="accountData"/>
 		</div><!-- Dieses </div> schließt ein in der 20. Zeile(FrameworkBean) eröffnetes <div> -->

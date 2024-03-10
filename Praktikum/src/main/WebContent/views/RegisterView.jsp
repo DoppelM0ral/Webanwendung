@@ -52,46 +52,36 @@
 	<!-- Hier wird die Oberfläche fürs Registrieren geladen -->
 	<%-- <jsp:getProperty name="account" property="registerField"/> --%>
 	
-	<div id='content'>
-
-		<form  action='../appls/RegisterAppl.jsp' method='get'>
-			<table >
-				<tr>
-		 			<td><img id="info" alt="info" src="../content/Info.png"></td>
-		 			<td>Nickname:</td>
-		 			<td><input type='text' name='username' value=''/></td>
-				</tr>
-				<tr>
-					<td><img id="info" alt="info" src="../content/Info.png"></td>
-					<td>Passwort:</td>
-					<td><input id='passwordField' type='password' name='password' value=''onkeyup='checkPassword(this.value)'/></td>
-				</tr>
-				<tr>
-					<td><img id="info" alt="info" src="../content/Info.png"></td>
-					<td>Sprache:</td>
-					<td><input type='text' name='language' value=''/></td>
-				</tr>
-				<tr>
-					<td><img id="info" alt="info" src="../content/Info.png"></td>
-					<td>E-Mail:</td>
-					<td><input type='email' name='email' value=''/></td>
-		 		</tr>
-				<tr>
-					<td colspan="3" align="center">
-						<input class='button' type='submit' name='btnToLogin' value='zum Anmelden' onclick='setButtonClicked(this.name)'/>
-						<input class='button' type='submit' name='btnRegister' value='Registrieren' onclick='setButtonClicked(this.name)'/>
-					</td>
-				</tr>
-			</table>
-		</form>
-
-	</div>
-
+		<div id='content'>
 	
-
+			<form  action='../appls/RegisterAppl.jsp' method='get'>
+				<table >
+					<tr>
+			 			<td><img id="info" alt="info" src="../content/Info.png"></td>
+			 			<td>Nickname:</td>
+			 			<td><input type='text' name='username' value=''/></td>
+					</tr>
+					<tr>
+						<td><img id="info" alt="info" src="../content/Info.png"></td>
+						<td>Passwort:</td>
+						<td><input id='passwordField' type='password' name='password' value=''/></td>
+					</tr>
+					<tr>
+						<td><img id="info" alt="info" src="../content/Info.png"></td>
+						<td>E-Mail:</td>
+						<td><input type='email' name='email' value=''/></td>
+			 		</tr>
+					<tr>
+						<td colspan="3" align="center">
+							<input class='button' type='submit' name='btnToLogin' value='zum Anmelden'/>
+							<input class='button' type='submit' name='btnRegister' value='Registrieren'/>
+						</td>
+					</tr>
+				</table>
+			</form>
 	
-
-			
+		</div>
+		
 	</div><!-- Dieses </div> schließt ein in der 20. Zeile eröffnetes <div> -->
 	<jsp:getProperty name="framework" property="footer"/>	
 	</body>

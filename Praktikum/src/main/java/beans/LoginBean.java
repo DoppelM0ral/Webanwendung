@@ -48,11 +48,6 @@ public class LoginBean {
 							+ "								<input class='button' type='submit' name='btnToRegister' value='zum Registrieren'/>\n"
 							+ "							</td>\n"
 							+ "						</tr>\n"
-							+ "						<tr>\n"
-							+ "							<td colspan='2' align='center'>\n"
-							+ "								Passwort vergessen?\n"
-							+ "							</td>\n"
-							+ "						</tr>\n"
 							+ "					</table>\n"
 							+ "				</form>\n"			
 							+ "			</div>";

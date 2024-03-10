@@ -110,7 +110,7 @@
 					</td>
 					<td class="basicinfo">
 						 <select name="price">
-							<option>Günstig </option>
+							<option>Billig </option>
 							<option>Normal </option>
 							<option>Teuer </option>
 						</select>

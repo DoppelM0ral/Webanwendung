@@ -30,7 +30,6 @@
 			//HTTP Übernahme
 			String username   = request.getParameter("username");
 			String password = request.getParameter("password");
-			String language = request.getParameter("language");
 			String email 	= request.getParameter("email");
 			String btnToLogin	 = request.getParameter("btnToLogin");
 			String btnRegister   = request.getParameter("btnRegister");
@@ -50,7 +49,6 @@
 				account.setEmail(email);
 				if(account.checkUserExist()== false && account.checkEmailExist()== false){
 					account.setPassword(password);
-					account.setLanguage(language);
 					account.insertAccount();
 					//Messagebean wird gesetzt
 					message.setRegisterSuccess();

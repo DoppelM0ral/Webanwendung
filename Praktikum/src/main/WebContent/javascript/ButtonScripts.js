@@ -6,8 +6,3 @@ function buttonCheck(){
 		document.getElementById("navbar").innerHTML += "<a class='nav' id='right' href='../appls/AccountAppl.jsp?btnInfo=btnInfo'><img class='nav' src='../content/User.png' alt='Key'></a>\n";
 	}
 }
-
-
-		
-
-	

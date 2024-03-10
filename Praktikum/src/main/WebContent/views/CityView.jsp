@@ -17,7 +17,7 @@
 		<!-- In diesem Bereich werden andere relevante Formatierungen geladen -->
 		<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
 		<script type="text/javascript" src="../javascript/ButtonScripts.js"></script>
-		<script type="text/javascript" src="../js/CityJS.js"></script>
+		<script type="text/javascript" src="../javascript/CityJS.js"></script>
 		<!-- Hier wird das Icon geladen -->
 		<link rel="icon" type="image/x-icon" href="../content/Icon.png">
 		
@@ -60,8 +60,8 @@
 	
 			<tr>
 				<td colspan="2" align="center">
-					<input type="radio" id=accommodationRadio name="searchType" value="accommodation" onclick="showHideFields()">Unterkunft
-					<input type="radio" id="restaurantRadio" name="searchType" value="restaurant" onclick="showHideFields()">Restaurant<br>
+					<input type="radio" id=accommodationRadio name="searchType" value="accommodation" onchange="showHideFields()">Unterkunft
+					<input type="radio" id="restaurantRadio" name="searchType" value="restaurant" onchange="showHideFields()">Restaurant<br>
 				</td>
 			</tr>
 

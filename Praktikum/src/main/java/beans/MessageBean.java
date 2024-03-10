@@ -9,6 +9,8 @@ public class MessageBean {
 		this.setGeneralWelcome();
 	}
 	
+	//Von Kai angelegt
+	
 	//Generelle Begrüßung
 	public void setGeneralWelcome(){
 		this.mainMessage = "<h2>Um unseren Stadtguide zu nutzen muss man angemeldet sein</h2>";
@@ -24,7 +26,7 @@ public class MessageBean {
 	//AccountView Begrüßung
 	public void setAccountWelcome() {
 		this.mainMessage = "<h2>Hier findest du Informationen zu deinem Account</h2>";
-		this.secondaryMessage = "Du kannst sie auch ändern";
+		this.secondaryMessage = "Du kannst dich auch abmelden";
 	}
 	
 	//CentralView Begrüßung
@@ -98,6 +100,13 @@ public class MessageBean {
 		this.mainMessage = "<h2>Hier kannst du eine neue Stadt anlegen</h2>";
 		this.secondaryMessage = "Einfach die geforderten Daten eingeben";
 	}
+	
+	//Abmledung erfolgreich
+    public void setLogoutMessage() {
+        this.mainMessage = "<h2>Das Abmelden war erfolgreich</h2>";
+        this.secondaryMessage = "Hier kannst du dich wieder anmelden wenn du willst";
+
+    }
 	
 
 	

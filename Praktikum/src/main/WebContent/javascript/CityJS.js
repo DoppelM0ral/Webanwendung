@@ -1,6 +1,4 @@
 
-
-
 function showHideFields() {
     var accommodationRadio = document.getElementById("accommodationRadio");
     var accommodationFields = document.getElementById("accommodationFields");

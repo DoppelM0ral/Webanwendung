@@ -27,22 +27,34 @@
 		<!-- Inhalt Java Funktionen -->
 		<%
 			//HTTP Übernahme
-			String btnInfo  = request.getParameter("btnInfo");	
+	        String btnInfo    = request.getParameter("btnInfo");
+	        String btnChange  = request.getParameter("btnChange");
+	        String btnLogout  = request.getParameter("btnLogout");
 	
-			//null-check
-			if(btnInfo 	== null)	{btnInfo = "";}
+	        //null-check
+	        if(btnInfo         == null)    {btnInfo = "";}
+	        if(btnChange    == null)    {btnChange= "";}
+	        if(btnLogout    == null)    {btnLogout = "";}
 	
-			//Tatsächliche Verarbeitung
-			if(btnInfo.equals("btnInfo")){
-				message.setAccountWelcome();
-				account.getAccountData();
-				response.sendRedirect("../views/AccountView.jsp");
-			}else{
-				message.setAccountWelcome();
-				account.getAccountData();
-				response.sendRedirect("../views/AccountView.jsp");
-			}
-			
+	        //Tatsächliche Verarbeitung
+	        if(btnInfo.equals("btnInfo")){
+	            message.setAccountWelcome();
+	            account.getAccountData();
+	            response.sendRedirect("../views/AccountView.jsp");
+	        }else if(btnChange.equals("Ausgewählte Information ändern")){
+	
+	            response.sendRedirect("../views/LoginView.jsp");
+	        }else if(btnLogout.equals("Abmelden")){
+	            account.initialize();
+	            login.setLoggedIn(false);
+	            message.setLogoutMessage();
+	
+	            response.sendRedirect("../views/LoginView.jsp");
+	        }else{
+	            message.setAccountWelcome();
+	            account.getAccountData();
+	            response.sendRedirect("../views/AccountView.jsp");
+	        }	
 		%>	
 	</body>
 </html>
