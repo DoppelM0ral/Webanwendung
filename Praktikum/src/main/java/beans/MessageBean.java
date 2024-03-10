@@ -92,6 +92,24 @@ public class MessageBean {
 		this.mainMessage = "<h2>Es gab einen Fehler</h2>";
 		this.secondaryMessage = "Versuche es nocheinmal oder Kontaktiere eine zuständige Person";
 	}
+	
+	//Neue Stadt anlegen Message
+	public void	setNewCity() {
+		this.mainMessage = "<h2>Hier kannst du eine neue Stadt anlegen</h2>";
+		this.secondaryMessage = "Einfach die geforderten Daten eingeben";
+	}
+	
+
+	
+	//Von Caro angelegt
+	public void setAddCityMessage() {
+        this.mainMessage = "<h2>Hier kannst du eine Stadt anlegen</h2>";
+        this.secondaryMessage = "Gebe einfach die Daten zur jeweiligen Stadt ein und füge sie hinzu";
+    }
+    public void setCityMessage() {
+        this.mainMessage = "<h2>Hier siehst du deine Stadt!</h2>";
+        this.secondaryMessage = "Hier kannst du nach Unterkünften und Restaurants fuer dein Stadt suchen";
+    }
 
 	//Getter und Setter
 	public String getMainMessage() {

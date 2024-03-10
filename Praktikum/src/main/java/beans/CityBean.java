@@ -12,6 +12,8 @@ import jdbc.PostgreSQLAccess;
 
 public class CityBean {
 	
+	boolean a;
+	String search;
 	String idAccommodation;
 	String idRestaurant;
 	String cityName;
@@ -27,6 +29,9 @@ public class CityBean {
 	boolean pescetarian;
 	String koshaString = "true";
 	boolean kosha;
+	String hotel;
+	String airbnb;
+	String motel;
 	String type;
 	String animalsString;
 	boolean animals;
@@ -46,9 +51,83 @@ public class CityBean {
 	}
 	
 	public void initialize() {
-		this.cityName = "";
+		this.cityName = ""; 
 		this.plz = "";
 		this.population = "";
+		this.vegan = false;
+		this.vegetarian = false;
+		this.pescetarian = false;
+		this.halal = false;
+		this.kosha = false;
+		this.animals = false;
+		this.hotel = "";
+		this.airbnb = "";
+		this.motel = "";
+		this.childcare = false;
+		this.restaurant = false;
+		this.search = "";
+	}
+	
+	
+	
+	public String getSearchResults() throws NoConnectionException, SQLException{
+
+		System.out.println("in der methode");
+		String output = "";
+		String sql = "SELECT * FROM " + this.search;
+		if (this.search.equals("restaurant")) {
+            sql = "SELECT r.*, b.name AS base_name, b.reference AS base_reference, b.street AS base_street, b.housenumber AS base_number " +
+                  "FROM restaurant r " +
+                  "JOIN base b ON r.refid = b.refid " +
+                  "WHERE 1=1 "; // Dummy-Bedingung, um die WHERE-Klausel korrekt zu bilden
+
+            if (this.vegetarian) {
+                sql += "AND r.vegetarian = true ";
+            }
+            if (this.vegan) {
+                sql += "AND r.vegan = true ";
+            }
+            if (this.pescetarian) {
+                sql += "AND r.pescetarian = true ";
+            }
+            if (this.halal) {
+                sql += "AND r.halal = true ";
+            }
+            if (this.kosha) {
+                sql += "AND r.kosha = true ";
+            }
+        } else if (this.search.equals("accommodation")) {
+            sql = "SELECT a.*, b.name AS base_name, b.reference AS base_reference, b.street AS base_street, b.housenumber AS base_number " +
+                  "FROM accommodation a " +
+                  "JOIN base b ON a.refid = b.refid " +
+                  "WHERE 1=1 "; // Dummy-Bedingung, um die WHERE-Klausel korrekt zu bilden
+
+            if (airbnb != null && !airbnb.isEmpty()) {
+                sql += "AND a.type = 'airbnb'";
+            }
+            if (hotel != null && !hotel.isEmpty()) {
+                sql += "AND a.type = 'hotel'";
+            }
+            if (motel != null && !motel.isEmpty()) {
+                sql += "AND a.type = 'motel' ";
+            }
+            
+        
+        }else {
+            // Behandeln Sie den Fall, wenn this.search nicht "restaurant" oder "accommodation" entspricht
+            // Hier k�nnen Sie eine Standardabfrage festlegen oder eine Fehlermeldung generieren
+            // Zum Beispiel:
+            throw new IllegalArgumentException("Ung�ltiger Suchtyp: " + this.search);
+        }
+		System.out.println("methode wird ausgefuehrt");
+		ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
+		while(dbRes.next()) {
+			System.out.println("funktioniertVor");
+			output += dbRes.getString("base_reference")+ (":&nbsp;") + dbRes.getString("base_name") + (",&nbsp;") + dbRes.getString("base_street") + ("&nbsp;") + dbRes.getString("base_number") +"\n<br>";
+			System.out.println("funktioniertNach");
+		} System.out.println("schleife uebersprungen");
+		return output;
+		
 	}
 	
 	public boolean cityCheck() throws SQLException{
@@ -156,6 +235,40 @@ public class CityBean {
 		System.out.println();
 	}
 	
+	
+	
+	public String getSearch() {
+		return search;
+	}
+
+	public void setSearch(String search) {
+		this.search = search;
+	}
+
+	public String getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(String hotel) {
+		this.hotel = hotel;
+	}
+
+	public String getAirbnb() {
+		return airbnb;
+	}
+
+	public void setAirbnb(String airbnb) {
+		this.airbnb = airbnb;
+	}
+
+	public String getMotel() {
+		return motel;
+	}
+
+	public void setMotel(String motel) {
+		this.motel = motel;
+	}
+
 	public String getCityName() {
 		return cityName;
 	}
@@ -286,7 +399,7 @@ public class CityBean {
 						"						Name der Stadt:\n" + 
 						"					</td>\n" + 
 						"					<td>\n" + 
-						"						<input type='text' name='nameCity' value=''>\n" + 
+						"						<input type='text' name='plz' value=''>\n" + 
 						"					</td>\n" + 
 						"				</tr>\n" + 
 						"				<tr>\n" + 
@@ -319,49 +432,49 @@ public class CityBean {
 	
 	
 	//Von Kai Angelegt
-	public String getAllCitysName() throws SQLException {
-		String output = "";
-		String sql = "SELECT * FROM city";
-		ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
-		while(dbRes.next()) {
-			output += "<option value="+ dbRes.getString("name") +">" + dbRes.getString("name") + " - " + dbRes.getString("plz") + "</option>\n<br>";
+		public String getAllCitysName() throws SQLException {
+			String output = "";
+			String sql = "SELECT * FROM city";
+			ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
+			while(dbRes.next()) {
+				output += "<option value="+ dbRes.getString("name") +">" + dbRes.getString("name") + " - " + dbRes.getString("plz") + "</option>\n<br>";
+			}
+			return output;
 		}
-		return output;
-	}
 
-	public String getAllCitysPLZ() throws SQLException {
-		String output = "";
-		String sql = "SELECT* FROM city";
-		ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
-		while(dbRes.next()) {
-			output += "<option value="+ dbRes.getString("plz") +">" + dbRes.getString("plz") + " - " + dbRes.getString("name") + "</option>\n<br>";
+		public String getAllCitysPLZ() throws SQLException {
+			String output = "";
+			String sql = "SELECT* FROM city";
+			ResultSet dbRes = this.dbConn.prepareStatement(sql).executeQuery();
+			while(dbRes.next()) {
+				output += "<option value="+ dbRes.getString("plz") +">" + dbRes.getString("plz") + " - " + dbRes.getString("name") + "</option>\n<br>";
+			}
+			return output;
 		}
-		return output;
-	}
-	
-	public void selectCityWithPLZ(String plz) throws SQLException {
-		String sql = "SELECT * FROM city WHERE plz = ?";
-		PreparedStatement prep = this.dbConn.prepareStatement(sql);
-		prep.setString(1, plz);
-		ResultSet dbRes = prep.executeQuery();
-		while(dbRes.next()) {
-			setPlz(dbRes.getString("plz"));
-			setCityName(dbRes.getString("name"));
-			setPopulation(dbRes.getString("population"));
+		
+		public void selectCityWithPLZ(String plz) throws SQLException {
+			String sql = "SELECT * FROM city WHERE plz = ?";
+			PreparedStatement prep = this.dbConn.prepareStatement(sql);
+			prep.setString(1, plz);
+			ResultSet dbRes = prep.executeQuery();
+			while(dbRes.next()) {
+				setPlz(dbRes.getString("plz"));
+				setCityName(dbRes.getString("name"));
+				setPopulation(dbRes.getString("population"));
+			}
 		}
-	}
-	
-	public void selectCityWithName(String name) throws SQLException {
-		String sql = "SELECT * FROM city WHERE name = ?";
-		PreparedStatement prep = this.dbConn.prepareStatement(sql);
-		prep.setString(1, name);
-		ResultSet dbRes = prep.executeQuery();
-		while(dbRes.next()) {
-			setPlz(dbRes.getString("plz"));
-			setCityName(dbRes.getString("name"));
-			setPopulation(dbRes.getString("population"));
+		
+		public void selectCityWithName(String name) throws SQLException {
+			String sql = "SELECT * FROM city WHERE name = ?";
+			PreparedStatement prep = this.dbConn.prepareStatement(sql);
+			prep.setString(1, name);
+			ResultSet dbRes = prep.executeQuery();
+			while(dbRes.next()) {
+				setPlz(dbRes.getString("plz"));
+				setCityName(dbRes.getString("name"));
+				setPopulation(dbRes.getString("population"));
+			}
 		}
-	}
 	
 	
 

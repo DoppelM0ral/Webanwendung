@@ -13,7 +13,8 @@
 		<!-- Hier wird die Grundformatierung geladen -->
 		<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
 		<!-- In diesem Bereich werden andere relevante Formatierungen geladen -->
-		
+		<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
+		<script type="text/javascript" src="../javascript/ButtonScripts.js"></script>
 		<!-- Hier wird das Icon geladen -->
 		<link rel="icon" type="image/x-icon" href="../content/Icon.png">
 		
@@ -25,9 +26,24 @@
 	<jsp:useBean id="framework" class="beans.FrameworkBean" scope="session"/>	
 	<jsp:useBean id="message" class="beans.MessageBean" scope="session"/>
 	<jsp:useBean id="city" class="beans.CityBean" scope="session"/>
+	<jsp:useBean id="login" class="beans.LoginBean" scope="session"/>
 	
+		<!-- Redirect wenn nicht logged in -->
+	<form action="../appls/CentralAppl.jsp" method="get" name="redirect">
+		<input type="hidden" id="loginCheck" name="loginCheck" value="<jsp:getProperty name="login" property="loggedIn"/>"/>
+	</form>
+	<script type="text/javascript">
+		loginFalseCheck();
+	</script>
 	
 	<jsp:getProperty name="framework" property="framework"/>
+	
+	<div id="mainmsg">
+	<jsp:getProperty name="message" property="mainMessage"/>
+	</div>
+	<div id="secondarymsg">
+	<jsp:getProperty name="message" property="secondaryMessage"/>
+	</div>
 	
 	<jsp:getProperty name="city" property="addCityDiv"/>
 	
