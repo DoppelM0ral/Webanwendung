@@ -11,7 +11,6 @@
 			<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
 			
 			<!-- In diesem Bereich werden andere relevante Formatierungen geladen -->
-			<link rel="stylesheet" type="text/css" href="../css/RegisterCSS.css">
 			
 			<!-- In diesem Bereich wird das zentrale JavaScript geladen -->
 			<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
@@ -57,17 +56,14 @@
 			<form  action='../appls/RegisterAppl.jsp' method='get'>
 				<table >
 					<tr>
-			 			<td><img id="info" alt="info" src="../content/Info.png"></td>
 			 			<td>Nickname:</td>
 			 			<td><input type='text' name='username' value=''/></td>
 					</tr>
 					<tr>
-						<td><img id="info" alt="info" src="../content/Info.png"></td>
 						<td>Passwort:</td>
 						<td><input id='passwordField' type='password' name='password' value=''/></td>
 					</tr>
 					<tr>
-						<td><img id="info" alt="info" src="../content/Info.png"></td>
 						<td>E-Mail:</td>
 						<td><input type='email' name='email' value=''/></td>
 			 		</tr>
