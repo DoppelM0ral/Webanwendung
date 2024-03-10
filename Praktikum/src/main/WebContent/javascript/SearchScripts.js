@@ -56,14 +56,4 @@ function showSpecific(option){
 	
 	//Button Wert an ausgewählten Input anpassen
 	document.getElementById("submit").value = ""+ option.value +" anlegen";
-	
-	//
-	document
-}
-
-window.addEventListener("resize", resize)
-
-function resize(){
-	document.getElementById("leftbar").style.height.va = document.getElementById("central").style.height.valueOf;
-	document.getElementById("rightbar").style.height = document.getElementById("central").style.height.valueOf;
 }

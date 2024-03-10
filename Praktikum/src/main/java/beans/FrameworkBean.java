@@ -36,7 +36,7 @@ public class FrameworkBean {
 	public String getFooter() {
 		String footer = ""
 					+ "<footer>\n"
-					+ "		test\n"
+					+ "		© Kai Droege & Carolina Jochim\n"
 					+ "	</footer>\n";
 		return footer;
 	}

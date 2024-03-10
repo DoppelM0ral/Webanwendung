@@ -28,12 +28,10 @@
 		<%
 			//HTTP Übernahme
 	        String btnInfo    = request.getParameter("btnInfo");
-	        String btnChange  = request.getParameter("btnChange");
 	        String btnLogout  = request.getParameter("btnLogout");
 	
 	        //null-check
 	        if(btnInfo         == null)    {btnInfo = "";}
-	        if(btnChange    == null)    {btnChange= "";}
 	        if(btnLogout    == null)    {btnLogout = "";}
 	
 	        //Tatsächliche Verarbeitung
@@ -41,9 +39,6 @@
 	            message.setAccountWelcome();
 	            account.getAccountData();
 	            response.sendRedirect("../views/AccountView.jsp");
-	        }else if(btnChange.equals("Ausgewählte Information ändern")){
-	
-	            response.sendRedirect("../views/LoginView.jsp");
 	        }else if(btnLogout.equals("Abmelden")){
 	            account.initialize();
 	            login.setLoggedIn(false);
@@ -51,9 +46,7 @@
 	
 	            response.sendRedirect("../views/LoginView.jsp");
 	        }else{
-	            message.setAccountWelcome();
-	            account.getAccountData();
-	            response.sendRedirect("../views/AccountView.jsp");
+	            response.sendRedirect("../views/CentralView.jsp");
 	        }	
 		%>	
 	</body>
