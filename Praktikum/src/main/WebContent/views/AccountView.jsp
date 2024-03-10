@@ -11,7 +11,7 @@
 			<link rel="stylesheet" type="text/css" href="../css/FrameworkCSS.css">
 			
 			<!-- In diesem Bereich werden andere relevante Formatierungen geladen -->
-			<link rel="stylesheet" type="text/css" href="../css/AccountCSS.css">
+			
 			
 			<!-- In diesem Bereich wird das zentrale JavaScript geladen -->
 			<script type="text/javascript" src="../javascript/RedirectScripts.js"></script>
