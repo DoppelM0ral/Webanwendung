@@ -28,24 +28,17 @@
 		<%
 			//HTTP Übernahme
 			String btnHome		= request.getParameter("btnHome");
-			String btnInfo  	= request.getParameter("btnInfo");
 			String btnSearch	= request.getParameter("btnSearch");
-			String loginCheck	= request.getParameter("loginCheck");
 			String msgCheck		= request.getParameter("msgCheck");
 			String plzsearch	= request.getParameter("plzsearch");
 			String namesearch	= request.getParameter("namesearch");
 			
 			//null-check
 			if(btnHome		== null){btnHome = "";}
-			if(btnInfo 		== null){btnInfo = "";}
 			if(btnSearch	== null){btnSearch= "";}
-			if(loginCheck	== null){loginCheck  = "";}
 			if(msgCheck		== null){msgCheck  = "";}
 			
-			if(btnInfo.equals("btnInfo")){
-				message.setAccountWelcome();
-				response.sendRedirect("../views/AccountView.jsp");
-			}else if(btnHome.equals("btnHome")){
+			if(btnHome.equals("btnHome")){
 				if(login.isLoggedIn()){
 					message.setCentralHelloMessage();
 					response.sendRedirect("../views/CentralView.jsp");
@@ -61,9 +54,6 @@
 					city.selectCityWithName(namesearch);
 					response.sendRedirect("../views/CityView.jsp");
 				}	
-			}else if(loginCheck.equals("false")){
-				message.setGeneralWelcome();
-				response.sendRedirect("../views/LoginView.jsp");
 			}else if(msgCheck.equals("<h2>Du bist jetzt angemeldet!</h2>")){
 				message.setCentralHelloMessage();
 				response.sendRedirect("../views/CentralView.jsp");
